@@ -5,7 +5,7 @@
  */
 
 import { useEffect } from 'react';
-import { Award, Users, Factory, Calendar, MapPin, CheckCircle } from 'lucide-react';
+import { Award, Users, Factory, Calendar, MapPin, CheckCircle, Shield, Truck, Zap, Settings } from 'lucide-react';
 import { Layout, Breadcrumbs } from '@/components/layout';
 import { ContactForm } from '@/components/sections';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
@@ -35,6 +35,32 @@ const ADVANTAGES = [
 ];
 
 /**
+ * Особенности производства
+ */
+const PRODUCTION_FEATURES = [
+  {
+    icon: Settings,
+    title: 'Современное оборудование',
+    description: 'Автоматизированные линии резки стекла обеспечивают точность до 0.1 мм. Герметизация выполняется с соблюдением всех технологических норм.'
+  },
+  {
+    icon: Shield,
+    title: 'Контроль качества',
+    description: 'Каждый стеклопакет проходит многоэтапную проверку: контроль размеров, визуальный осмотр, тест на герметичность.'
+  },
+  {
+    icon: Zap,
+    title: 'Высокая производительность',
+    description: 'Мощность производства позволяет изготавливать более 500 стеклопакетов в сутки. Стандартные заказы выполняем за 1 час.'
+  },
+  {
+    icon: Truck,
+    title: 'Быстрая логистика',
+    description: 'Собственный автопарк со специализированным оборудованием для безопасной транспортировки. Доставка по Ростову за 2 часа.'
+  },
+];
+
+/**
  * Компонент AboutPage
  */
 const AboutPage = () => {
@@ -59,7 +85,7 @@ const AboutPage = () => {
         <header style={{ marginBottom: '64px' }}>
           <h1 style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: '42px',
+            fontSize: 'clamp(28px, 5vw, 42px)',
             fontWeight: 700,
             color: '#00407e',
             margin: '0 0 16px 0',
@@ -68,7 +94,7 @@ const AboutPage = () => {
           </h1>
           <p style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: '18px',
+            fontSize: 'clamp(15px, 2vw, 18px)',
             color: '#718096',
             lineHeight: 1.8,
             maxWidth: '900px',
@@ -84,7 +110,7 @@ const AboutPage = () => {
         {/* Статистика */}
         <section style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '24px',
           marginBottom: '80px',
         }}>
@@ -95,7 +121,7 @@ const AboutPage = () => {
                 background: '#ffffff',
                 border: '1px solid rgba(0, 51, 102, 0.08)',
                 borderRadius: '16px',
-                padding: '32px',
+                padding: '32px 24px',
                 textAlign: 'center',
               }}
             >
@@ -114,7 +140,7 @@ const AboutPage = () => {
               </div>
               <div style={{
                 fontFamily: "'Inter', sans-serif",
-                fontSize: '36px',
+                fontSize: 'clamp(28px, 4vw, 36px)',
                 fontWeight: 800,
                 color: '#ff342f',
                 marginBottom: '4px',
@@ -135,14 +161,14 @@ const AboutPage = () => {
         {/* О нас */}
         <section style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '48px',
           marginBottom: '80px',
         }}>
           <div>
             <h2 style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: '28px',
+              fontSize: 'clamp(22px, 3vw, 28px)',
               fontWeight: 700,
               color: '#2D3748',
               margin: '0 0 24px 0',
@@ -173,7 +199,7 @@ const AboutPage = () => {
           <div>
             <h2 style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: '28px',
+              fontSize: 'clamp(22px, 3vw, 28px)',
               fontWeight: 700,
               color: '#2D3748',
               margin: '0 0 24px 0',
@@ -195,7 +221,7 @@ const AboutPage = () => {
                     borderBottom: '1px solid rgba(0, 51, 102, 0.06)',
                   }}
                 >
-                  <CheckCircle size={20} color="#ff342f" />
+                  <CheckCircle size={20} color="#ff342f" style={{ flexShrink: 0 }} />
                   {advantage}
                 </li>
               ))}
@@ -203,23 +229,83 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Адрес производства */}
+        {/* Блок производства - расширенный */}
         <section style={{
-          background: '#F8F9FA',
+          background: 'linear-gradient(135deg, #00407e 0%, #003366 100%)',
           borderRadius: '24px',
-          padding: '48px',
+          padding: 'clamp(32px, 5vw, 64px)',
           marginBottom: '80px',
+          color: '#ffffff',
         }} id="production">
           <h2 style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: '28px',
+            fontSize: 'clamp(24px, 4vw, 32px)',
             fontWeight: 700,
-            color: '#2D3748',
-            margin: '0 0 24px 0',
+            margin: '0 0 16px 0',
             textAlign: 'center',
           }}>
-            Наше производство
+            Производство стеклопакетов в Ростове-на-Дону
           </h2>
+          <p style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 'clamp(14px, 2vw, 16px)',
+            opacity: 0.85,
+            textAlign: 'center',
+            maxWidth: '700px',
+            margin: '0 auto 48px',
+            lineHeight: 1.7,
+          }}>
+            Наш производственный комплекс оснащён современным оборудованием для изготовления 
+            стеклопакетов любой сложности — от стандартных однокамерных до энергосберегающих 
+            и шумоизоляционных конструкций.
+          </p>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '24px',
+            marginBottom: '48px',
+          }}>
+            {PRODUCTION_FEATURES.map((feature, index) => (
+              <div key={index} style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: '16px',
+                padding: '28px',
+                backdropFilter: 'blur(10px)',
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  background: 'rgba(255, 255, 255, 0.15)',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '16px',
+                }}>
+                  <feature.icon size={24} />
+                </div>
+                <h3 style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '18px',
+                  fontWeight: 600,
+                  margin: '0 0 8px 0',
+                }}>
+                  {feature.title}
+                </h3>
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '14px',
+                  opacity: 0.85,
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}>
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+          
           <div style={{
             display: 'flex',
             alignItems: 'center',
@@ -227,7 +313,6 @@ const AboutPage = () => {
             gap: '12px',
             fontFamily: "'Inter', sans-serif",
             fontSize: '18px',
-            color: '#2D3748',
           }}>
             <MapPin size={24} color="#ff342f" />
             г. Ростов-на-Дону
@@ -235,7 +320,7 @@ const AboutPage = () => {
           <p style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: '14px',
-            color: '#718096',
+            opacity: 0.7,
             textAlign: 'center',
             margin: '16px 0 0 0',
           }}>
@@ -247,7 +332,7 @@ const AboutPage = () => {
         <section style={{ marginBottom: '80px' }} id="certificates">
           <h2 style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: '32px',
+            fontSize: 'clamp(24px, 4vw, 32px)',
             fontWeight: 700,
             color: '#2D3748',
             margin: '0 0 32px 0',
@@ -256,22 +341,106 @@ const AboutPage = () => {
             Качество и гарантия
           </h2>
           <div style={{
-            background: '#ffffff',
-            border: '1px solid rgba(0, 51, 102, 0.08)',
-            borderRadius: '20px',
-            padding: '48px',
-            textAlign: 'center',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '24px',
           }}>
-            <Award size={64} color="#00a3d5" style={{ marginBottom: '24px', opacity: 0.5 }} />
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '16px',
-              color: '#718096',
-              margin: 0,
+            {/* Сертификат-заглушка */}
+            <div style={{
+              background: '#ffffff',
+              border: '1px solid rgba(0, 51, 102, 0.08)',
+              borderRadius: '20px',
+              padding: '40px',
+              textAlign: 'center',
             }}>
-              Вся продукция сертифицирована и соответствует ГОСТ.<br />
-              Гарантия 5 лет на все стеклопакеты. Сертификаты предоставляем по запросу.
-            </p>
+              <div style={{
+                width: '100%',
+                aspectRatio: '3/4',
+                background: 'linear-gradient(135deg, #f8f9fa 0%, #e2e8f0 100%)',
+                borderRadius: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '20px',
+                border: '2px dashed rgba(0, 64, 126, 0.2)',
+              }}>
+                <Award size={64} color="#00a3d5" style={{ marginBottom: '16px', opacity: 0.5 }} />
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '14px',
+                  color: '#718096',
+                  margin: 0,
+                }}>
+                  Сертификат соответствия
+                </p>
+              </div>
+              <h3 style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '16px',
+                fontWeight: 600,
+                color: '#00407e',
+                margin: '0 0 8px 0',
+              }}>
+                Сертификат ГОСТ
+              </h3>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '14px',
+                color: '#718096',
+                margin: 0,
+              }}>
+                Сертификат предоставляется по запросу
+              </p>
+            </div>
+
+            {/* Текстовый блок */}
+            <div style={{
+              background: '#ffffff',
+              border: '1px solid rgba(0, 51, 102, 0.08)',
+              borderRadius: '20px',
+              padding: '40px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}>
+              <Award size={48} color="#00a3d5" style={{ marginBottom: '24px' }} />
+              <h3 style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '20px',
+                fontWeight: 700,
+                color: '#00407e',
+                margin: '0 0 16px 0',
+              }}>
+                Гарантия 5 лет
+              </h3>
+              <p style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '16px',
+                color: '#718096',
+                lineHeight: 1.7,
+                margin: '0 0 20px 0',
+              }}>
+                Вся продукция сертифицирована и соответствует ГОСТ. 
+                Мы даём официальную гарантию 5 лет на все стеклопакеты.
+              </p>
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                {['Сертификаты ГОСТ', 'Гарантийное обслуживание', 'Контроль качества'].map((item, i) => (
+                  <li key={i} style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '14px',
+                    color: '#2D3748',
+                    padding: '8px 0',
+                  }}>
+                    <CheckCircle size={16} color="#00a3d5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       </div>

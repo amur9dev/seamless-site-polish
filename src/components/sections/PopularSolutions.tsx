@@ -9,7 +9,7 @@
  */
 
 import { Link } from 'react-router-dom';
-import { ArrowRight, Square, Layers, Thermometer, Volume2 } from 'lucide-react';
+import { ArrowRight, Layers, Thermometer, Volume2, Sun } from 'lucide-react';
 import styles from './PopularSolutions.module.css';
 
 /**
@@ -20,23 +20,23 @@ import styles from './PopularSolutions.module.css';
  */
 const PRODUCTS = [
   {
-    id: 'odnokamernye',
-    icon: Square,
-    title: 'Однокамерные',
-    description: 'Экономичное решение для нежилых помещений, балконов и лоджий. Подходит для регионов с мягким климатом',
-    features: ['Толщина 24 мм', 'Формула 4-16-4', 'Базовая теплоизоляция'],
-    price: 'от 1 200',
-    href: '/catalog/odnokamernye',
-    popular: false,
-  },
-  {
     id: 'dvuhkamernye',
     icon: Layers,
     title: 'Двухкамерные',
-    description: 'Оптимальный выбор для жилых помещений с отличной тепло- и шумоизоляцией. Самый популярный вариант',
+    description: 'Оптимальный выбор для жилых помещений с отличной тепло- и шумоизоляцией. Надёжный и проверенный вариант',
     features: ['Толщина 32-40 мм', 'Формула 4-12-4-12-4', 'Улучшенная изоляция'],
     price: 'от 1 800',
     href: '/catalog/dvuhkamernye',
+    popular: false,
+  },
+  {
+    id: 'multifunktsionalnye',
+    icon: Sun,
+    title: 'Мультифункциональные',
+    description: 'Сочетание энергосбережения, защиты от солнца и шумоизоляции в одном стеклопакете. Премиальное решение',
+    features: ['Защита от УФ до 99%', 'Защита от жары', 'Энергосбережение'],
+    price: 'от 3 600',
+    href: '/catalog/multifunktsionalnye',
     popular: true,
   },
   {

@@ -78,6 +78,7 @@
 /* Основная навигация */
 .header__main {
   padding: 0;
+  background: #fefefe;
 }
 
 .header__container {
@@ -109,7 +110,7 @@
 }
 
 .header__logoImage {
-  height: 64px;
+  height: 90px;
   width: auto;
   object-fit: contain;
 }

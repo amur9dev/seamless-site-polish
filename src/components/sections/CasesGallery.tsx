@@ -36,30 +36,6 @@ const CASES = [
     area: '— м²',
     image: '/placeholder.svg',
   },
-  {
-    id: 4,
-    title: 'Проект №4',
-    type: 'Тип объекта',
-    location: 'Ростов-на-Дону',
-    area: '— м²',
-    image: '/placeholder.svg',
-  },
-  {
-    id: 5,
-    title: 'Проект №5',
-    type: 'Тип объекта',
-    location: 'Ростов-на-Дону',
-    area: '— м²',
-    image: '/placeholder.svg',
-  },
-  {
-    id: 6,
-    title: 'Проект №6',
-    type: 'Тип объекта',
-    location: 'Ростов-на-Дону',
-    area: '— м²',
-    image: '/placeholder.svg',
-  },
 ];
 
 /**

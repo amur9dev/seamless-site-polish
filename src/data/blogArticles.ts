@@ -70,7 +70,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       </ul>
       <p>Оставьте заявку на расчёт, и мы подберём оптимальный стеклопакет для вашей квартиры!</p>
     `,
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop',
+    image: '/placeholder.svg',
     date: '2024-01-25',
     readTime: '7 мин',
     author: 'Александр Петров',
@@ -124,7 +124,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       </ul>
       <p>Закажите бесплатную консультацию, и мы подберём оптимальный вариант для вашей квартиры!</p>
     `,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop',
+    image: '/placeholder.svg',
     date: '2024-01-20',
     readTime: '5 мин',
     author: 'Михаил Сидоров',
@@ -181,7 +181,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       </ul>
       <p>В «Стеклопром» мы даём гарантию 5 лет на стеклопакеты и рекомендуем проверенных установщиков.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=800&h=500&fit=crop',
+    image: '/placeholder.svg',
     date: '2024-01-15',
     readTime: '6 мин',
     author: 'Александр Петров',
@@ -239,7 +239,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
         <li><strong>Плёнки на стекло</strong> — бюджетный вариант для существующих окон</li>
       </ul>
     `,
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&h=500&fit=crop',
+    image: '/placeholder.svg',
     date: '2024-01-10',
     readTime: '5 мин',
     author: 'Михаил Сидоров',
@@ -333,7 +333,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       </ul>
       <p>Закажите бесплатный расчёт — мы подберём оптимальный вариант с учётом ваших задач и бюджета!</p>
     `,
-    image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=500&fit=crop',
+    image: '/placeholder.svg',
     date: '2024-01-05',
     readTime: '8 мин',
     author: 'Александр Петров',
