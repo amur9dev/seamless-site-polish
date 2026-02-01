@@ -1,0 +1,260 @@
+/**
+ * Footer.module.css
+ * Стили подвала сайта с БЭМ-методологией
+ * 
+ * Блок: footer
+ * Элементы: container, logo, nav, contacts, etc.
+ */
+
+.footer {
+  background: #00407e;
+  color: #fefefe;
+}
+
+.footer__main {
+  padding: 64px 0 40px;
+}
+
+.footer__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+/* Колонка с логотипом и контактами */
+.footer__brand {
+  padding-right: 24px;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+
+.footer__logoIcon {
+  width: 48px;
+  height: 48px;
+  background: #ff342f;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fefefe;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
+}
+
+.footer__logoText {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fefefe;
+  letter-spacing: -0.5px;
+}
+
+.footer__description {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+}
+
+.footer__contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 8px;
+  margin-left: -8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.footer__contactItem:last-child {
+  margin-bottom: 0;
+}
+
+.footer__contactItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer__contactItem:hover .footer__contactIcon {
+  background: rgba(255, 52, 47, 0.15);
+  color: #ff342f;
+}
+
+.footer__contactItem:hover .footer__contactLink,
+.footer__contactItem:hover .footer__contactText {
+  color: #ff342f;
+}
+
+.footer__contactIcon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.footer__contactLink {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.footer__contactText {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+/* Колонки навигации */
+.footer__nav {
+  padding-top: 4px;
+}
+
+.footer__navTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fefefe;
+  margin: 0 0 20px 0;
+}
+
+.footer__navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__navItem {
+  margin-bottom: 12px;
+}
+
+.footer__navItem:last-child {
+  margin-bottom: 0;
+}
+
+.footer__navLink {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer__navLink:hover {
+  color: #ff342f;
+}
+
+/* Нижняя полоса */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px 0;
+}
+
+.footer__bottomContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.footer__legal {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__legalLink {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__legalLink:hover {
+  color: #ff342f;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  
+  .footer__brand {
+    grid-column: 1 / -1;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__main {
+    padding: 60px 0 40px;
+  }
+  
+  .footer__container {
+    padding: 0 16px;
+  }
+  
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .footer__bottomContainer {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 0 16px;
+  }
+  
+  .footer__legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}

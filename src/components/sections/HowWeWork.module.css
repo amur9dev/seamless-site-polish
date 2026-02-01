@@ -1,0 +1,182 @@
+/**
+ * HowWeWork.module.css
+ * Стили секции этапов работы с БЭМ-методологией
+ */
+
+.howwework {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+.howwework__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.howwework__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.howwework__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #00407e;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.howwework__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #718096;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.howwework__steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.howwework__steps::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff342f 0%, #00a3d5 100%);
+  z-index: 0;
+}
+
+.howwework__step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+}
+
+.howwework__stepNumber {
+  width: 80px;
+  height: 80px;
+  background: #ff342f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fefefe;
+  box-shadow: 0 8px 24px rgba(255, 52, 47, 0.3);
+  position: relative;
+}
+
+.howwework__stepNumber::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid rgba(255, 52, 47, 0.2);
+  border-radius: 50%;
+}
+
+.howwework__stepIcon {
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 163, 213, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #00a3d5;
+}
+
+.howwework__stepTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #00407e;
+  margin: 0 0 8px 0;
+}
+
+.howwework__stepDescription {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #718096;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.howwework__stepTime {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 6px 12px;
+  background: rgba(0, 163, 213, 0.1);
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #00a3d5;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .howwework__steps {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .howwework__steps::before {
+    display: none;
+  }
+  
+  .howwework__step {
+    flex: 0 0 calc(33.333% - 27px);
+  }
+}
+
+@media (max-width: 768px) {
+  .howwework {
+    padding: 80px 0;
+  }
+  
+  .howwework__container {
+    padding: 0 16px;
+  }
+  
+  .howwework__title {
+    font-size: 32px;
+  }
+  
+  .howwework__step {
+    flex: 0 0 calc(50% - 20px);
+  }
+  
+  .howwework__stepNumber {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .howwework__title {
+    font-size: 28px;
+  }
+  
+  .howwework__step {
+    flex: 0 0 100%;
+  }
+}
