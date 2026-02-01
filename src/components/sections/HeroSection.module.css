@@ -134,11 +134,6 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
-  transition: background 0.2s ease;
-}
-
-.hero__benefit:hover {
-  background: rgba(255, 255, 255, 0.15);
 }
 
 .hero__benefitIcon {
@@ -182,7 +177,7 @@
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
 }
 
@@ -192,11 +187,22 @@
   box-shadow: 0 6px 20px rgba(255, 52, 47, 0.35);
 }
 
+.hero__button--primary:hover {
+  background: #e02d29;
+  box-shadow: 0 8px 28px rgba(255, 52, 47, 0.45);
+  transform: translateY(-2px);
+}
+
 .hero__button--secondary {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
   border: 2px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
+}
+
+.hero__button--secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Индикатор прокрутки */

@@ -82,7 +82,7 @@ const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
   return (
     <nav 
       aria-label="Хлебные крошки" 
-      className="py-4"
+      className="pt-2.5 pb-4"
     >
       <ol className="flex flex-wrap items-center gap-2 text-body-sm">
         {/* Главная */}

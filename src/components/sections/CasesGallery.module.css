@@ -51,7 +51,12 @@
   overflow: hidden;
   aspect-ratio: 4/3;
   cursor: pointer;
-  group: true;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cases__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 64, 126, 0.2);
 }
 
 .cases__cardImage {
@@ -78,7 +83,7 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 24px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cases__card:hover .cases__cardOverlay {
