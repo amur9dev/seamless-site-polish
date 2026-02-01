@@ -197,15 +197,15 @@ const ContactForm = () => {
                 style={{ opacity: isSubmitting ? 0.7 : 1 }}
               >
                 {isSubmitting ? (
-                  <>
-                    <Loader2 size={20} className="animate-spin" style={{ marginRight: '8px' }} />
-                    Отправка...
-                  </>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <Loader2 size={20} className="animate-spin" />
+                    <span>Отправка...</span>
+                  </span>
                 ) : (
-                  <>
-                    Получить расчёт
-                    <ArrowRight size={20} style={{ marginLeft: '8px', display: 'inline' }} />
-                  </>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <span>Получить расчёт</span>
+                    <ArrowRight size={20} />
+                  </span>
                 )}
               </button>
 

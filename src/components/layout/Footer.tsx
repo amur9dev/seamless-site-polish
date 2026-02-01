@@ -75,7 +75,7 @@ const Footer = () => {
             <div className={styles.footer__brand}>
               <Link to="/" className={styles.footer__logo}>
                 <img 
-                  src="/images/logo.svg" 
+                  src="/images/logo.png" 
                   alt="Стеклопром" 
                   className={styles.footer__logoImage}
                 />

@@ -5,13 +5,14 @@
  */
 
 import { useEffect, useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 import { Layout, Breadcrumbs } from '@/components/layout';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
 import { formatPhone, handlePhoneKeyDown } from '@/utils/phoneFormat';
+import styles from './Contacts.module.css';
 
 /**
- * Контактная информация — телефон и email будут обновлены клиентом
+ * Контактная информация
  */
 const CONTACT_INFO = {
   phone: '+7 (863) 123-45-67',
@@ -46,7 +47,6 @@ const ContactsPage = () => {
       keywords: 'контакты Стеклопром Ростов, адрес производства стеклопакетов, телефон стеклопакеты Ростов-на-Дону, как добраться Стеклопром',
     });
 
-    // Добавляем структурированные данные для контактов
     const contactSchema = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
@@ -125,307 +125,30 @@ const ContactsPage = () => {
 
   return (
     <Layout withPadding>
-      <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 24px' }}>
+      <div className={styles.contacts}>
         <Breadcrumbs items={[{ label: 'Контакты' }]} />
 
         {/* Заголовок */}
-        <header style={{ marginBottom: '48px' }}>
-          <h1 style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '42px',
-            fontWeight: 700,
-            color: '#2D3748',
-            margin: '0 0 16px 0',
-          }}>
-            Контакты
-          </h1>
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '18px',
-            color: '#718096',
-            lineHeight: 1.6,
-            maxWidth: '800px',
-            margin: 0,
-          }}>
+        <header className={styles.contacts__header}>
+          <h1 className={styles.contacts__title}>Контакты</h1>
+          <p className={styles.contacts__subtitle}>
             Свяжитесь с нами любым удобным способом. Мы всегда рады ответить 
             на ваши вопросы и помочь с выбором стеклопакетов.
           </p>
         </header>
 
         {/* Основной контент */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '48px',
-          marginBottom: '64px',
-        }}>
-          {/* Контактная информация */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            {/* Телефон */}
-            <div style={{
-              background: '#ffffff',
-              border: '1px solid rgba(0, 51, 102, 0.08)',
-              borderRadius: '16px',
-              padding: '28px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '20px',
-            }}>
-              <div style={{
-                width: '56px',
-                height: '56px',
-                background: 'linear-gradient(135deg, #ff342f 0%, #e02e29 100%)',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: '0 6px 16px rgba(255, 52, 47, 0.25)',
-              }}>
-                <Phone size={26} color="#ffffff" />
-              </div>
-              <div>
-                <h2 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: '#2D3748',
-                  margin: '0 0 8px 0',
-                }}>
-                  Телефон
-                </h2>
-                <a
-                  href={CONTACT_INFO.phoneHref}
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '24px',
-                    fontWeight: 700,
-                    color: '#003366',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {CONTACT_INFO.phone}
-                </a>
-                <p style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '14px',
-                  color: '#718096',
-                  margin: '8px 0 0 0',
-                }}>
-                  Звоните, мы на связи!
-                </p>
-              </div>
-            </div>
-
-            {/* Email */}
-            <div style={{
-              background: '#ffffff',
-              border: '1px solid rgba(0, 51, 102, 0.08)',
-              borderRadius: '16px',
-              padding: '28px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '20px',
-            }}>
-              <div style={{
-                width: '56px',
-                height: '56px',
-                background: 'rgba(0, 51, 102, 0.1)',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                color: '#003366',
-              }}>
-                <Mail size={26} />
-              </div>
-              <div>
-                <h2 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: '#2D3748',
-                  margin: '0 0 8px 0',
-                }}>
-                  Email
-                </h2>
-                <a
-                  href={`mailto:${CONTACT_INFO.email}`}
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '18px',
-                    fontWeight: 600,
-                    color: '#003366',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {CONTACT_INFO.email}
-                </a>
-                <p style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '14px',
-                  color: '#718096',
-                  margin: '8px 0 0 0',
-                }}>
-                  Ответим быстро и оперативно
-                </p>
-              </div>
-            </div>
-
-            {/* Адрес */}
-            <div style={{
-              background: '#ffffff',
-              border: '1px solid rgba(0, 51, 102, 0.08)',
-              borderRadius: '16px',
-              padding: '28px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '20px',
-            }}>
-              <div style={{
-                width: '56px',
-                height: '56px',
-                background: 'rgba(0, 51, 102, 0.1)',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                color: '#003366',
-              }}>
-                <MapPin size={26} />
-              </div>
-              <div>
-                <h2 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: '#2D3748',
-                  margin: '0 0 8px 0',
-                }}>
-                  Адрес
-                </h2>
-                <p style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '18px',
-                  fontWeight: 600,
-                  color: '#2D3748',
-                  margin: 0,
-                }}>
-                  {CONTACT_INFO.address}
-                </p>
-                <p style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '14px',
-                  color: '#718096',
-                  margin: '8px 0 0 0',
-                }}>
-                  Производство и офис
-                </p>
-              </div>
-            </div>
-
-            {/* Режим работы */}
-            <div style={{
-              background: '#ffffff',
-              border: '1px solid rgba(0, 51, 102, 0.08)',
-              borderRadius: '16px',
-              padding: '28px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '20px',
-            }}>
-              <div style={{
-                width: '56px',
-                height: '56px',
-                background: 'rgba(0, 51, 102, 0.1)',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                color: '#003366',
-              }}>
-                <Clock size={26} />
-              </div>
-              <div>
-                <h2 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: '#2D3748',
-                  margin: '0 0 12px 0',
-                }}>
-                  Режим работы
-                </h2>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                  <li style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '15px',
-                    color: '#2D3748',
-                    marginBottom: '6px',
-                  }}>
-                    {CONTACT_INFO.workHours.weekdays}
-                  </li>
-                  <li style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '15px',
-                    color: '#2D3748',
-                    marginBottom: '6px',
-                  }}>
-                    {CONTACT_INFO.workHours.saturday}
-                  </li>
-                  <li style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '15px',
-                    color: '#718096',
-                  }}>
-                    {CONTACT_INFO.workHours.sunday}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Форма обратной связи */}
-          <div style={{
-            background: '#ffffff',
-            border: '1px solid rgba(0, 51, 102, 0.08)',
-            borderRadius: '20px',
-            padding: '40px',
-          }}>
-            <h2 style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '24px',
-              fontWeight: 700,
-              color: '#2D3748',
-              margin: '0 0 8px 0',
-            }}>
-              Написать нам
-            </h2>
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '14px',
-              color: '#718096',
-              margin: '0 0 32px 0',
-            }}>
+        <div className={styles.contacts__content}>
+          {/* Форма обратной связи - первая на мобильных */}
+          <div className={styles.contacts__form}>
+            <h2 className={styles.contacts__formTitle}>Написать нам</h2>
+            <p className={styles.contacts__formSubtitle}>
               Заполните форму и мы свяжемся с вами
             </p>
 
             <form onSubmit={handleSubmit}>
-              <div style={{ marginBottom: '20px' }}>
-                <label
-                  htmlFor="name"
-                  style={{
-                    display: 'block',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: '#2D3748',
-                    marginBottom: '8px',
-                  }}
-                >
+              <div className={styles.contacts__formGroup}>
+                <label htmlFor="name" className={styles.contacts__formLabel}>
                   Ваше имя *
                 </label>
                 <input
@@ -436,32 +159,12 @@ const ContactsPage = () => {
                   onChange={handleChange}
                   placeholder="Иван Иванов"
                   required
-                  style={{
-                    width: '100%',
-                    padding: '16px 20px',
-                    border: '2px solid rgba(0, 51, 102, 0.1)',
-                    borderRadius: '12px',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '16px',
-                    color: '#2D3748',
-                    background: '#F8F9FA',
-                    outline: 'none',
-                  }}
+                  className={styles.contacts__formInput}
                 />
               </div>
 
-              <div style={{ marginBottom: '20px' }}>
-                <label
-                  htmlFor="phone"
-                  style={{
-                    display: 'block',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: '#2D3748',
-                    marginBottom: '8px',
-                  }}
-                >
+              <div className={styles.contacts__formGroup}>
+                <label htmlFor="phone" className={styles.contacts__formLabel}>
                   Телефон *
                 </label>
                 <input
@@ -473,32 +176,12 @@ const ContactsPage = () => {
                   onKeyDown={handlePhoneKeyDownWrapper}
                   placeholder="+7 (___) ___-__-__"
                   required
-                  style={{
-                    width: '100%',
-                    padding: '16px 20px',
-                    border: '2px solid rgba(0, 51, 102, 0.1)',
-                    borderRadius: '12px',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '16px',
-                    color: '#2D3748',
-                    background: '#F8F9FA',
-                    outline: 'none',
-                  }}
+                  className={styles.contacts__formInput}
                 />
               </div>
 
-              <div style={{ marginBottom: '20px' }}>
-                <label
-                  htmlFor="email"
-                  style={{
-                    display: 'block',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: '#2D3748',
-                    marginBottom: '8px',
-                  }}
-                >
+              <div className={styles.contacts__formGroup}>
+                <label htmlFor="email" className={styles.contacts__formLabel}>
                   Email
                 </label>
                 <input
@@ -507,33 +190,13 @@ const ContactsPage = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="example@mail.ru"
-                  style={{
-                    width: '100%',
-                    padding: '16px 20px',
-                    border: '2px solid rgba(0, 51, 102, 0.1)',
-                    borderRadius: '12px',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '16px',
-                    color: '#2D3748',
-                    background: '#F8F9FA',
-                    outline: 'none',
-                  }}
+                  placeholder="your@email.com"
+                  className={styles.contacts__formInput}
                 />
               </div>
 
-              <div style={{ marginBottom: '24px' }}>
-                <label
-                  htmlFor="message"
-                  style={{
-                    display: 'block',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: '#2D3748',
-                    marginBottom: '8px',
-                  }}
-                >
+              <div className={styles.contacts__formGroup}>
+                <label htmlFor="message" className={styles.contacts__formLabel}>
                   Сообщение
                 </label>
                 <textarea
@@ -541,105 +204,77 @@ const ContactsPage = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Опишите ваш вопрос или заказ..."
+                  placeholder="Ваш вопрос или комментарий..."
                   rows={4}
-                  style={{
-                    width: '100%',
-                    padding: '16px 20px',
-                    border: '2px solid rgba(0, 51, 102, 0.1)',
-                    borderRadius: '12px',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '16px',
-                    color: '#2D3748',
-                    background: '#F8F9FA',
-                    outline: 'none',
-                    resize: 'vertical',
-                  }}
+                  className={styles.contacts__formTextarea}
                 />
               </div>
 
-              <button
-                type="submit"
-                style={{
-                  width: '100%',
-                  padding: '18px 32px',
-                  background: 'linear-gradient(135deg, #E30613 0%, #C00000 100%)',
-                  color: '#ffffff',
-                  border: 'none',
-                  borderRadius: '12px',
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '17px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '10px',
-                  boxShadow: '0 6px 20px rgba(227, 6, 19, 0.35)',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.boxShadow = '0 8px 28px rgba(227, 6, 19, 0.45)';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(227, 6, 19, 0.35)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                Отправить заявку
+              <button type="submit" className={styles.contacts__formButton}>
                 <Send size={20} />
+                Отправить сообщение
               </button>
-
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: '12px',
-                color: '#718096',
-                textAlign: 'center',
-                margin: '16px 0 0 0',
-              }}>
-                Нажимая кнопку, вы соглашаетесь с{' '}
-                <a href="/privacy" style={{ color: '#E30613', textDecoration: 'none' }}>
-                  политикой конфиденциальности
-                </a>
-              </p>
             </form>
           </div>
-        </div>
 
-        {/* Карта */}
-        <section style={{ marginBottom: '80px' }}>
-          <h2 style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '28px',
-            fontWeight: 700,
-            color: '#2D3748',
-            margin: '0 0 24px 0',
-          }}>
-            Как нас найти
-          </h2>
-          <div style={{
-            background: '#F8F9FA',
-            borderRadius: '20px',
-            height: '400px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            gap: '16px',
-          }}>
-            <MapPin size={48} color="#003366" style={{ opacity: 0.3 }} />
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '16px',
-              color: '#718096',
-              textAlign: 'center',
-            }}>
-              Карта будет добавлена при подключении Яндекс.Карт<br />
-              <strong>{CONTACT_INFO.address}</strong>
-            </p>
+          {/* Контактная информация */}
+          <div className={styles.contacts__info}>
+            {/* Телефон */}
+            <div className={styles.contacts__infoCard}>
+              <div className={styles.contacts__infoIcon}>
+                <Phone size={24} />
+              </div>
+              <div className={styles.contacts__infoContent}>
+                <h3 className={styles.contacts__infoTitle}>Телефон</h3>
+                <a href={CONTACT_INFO.phoneHref} className={styles.contacts__infoLink}>
+                  {CONTACT_INFO.phone}
+                </a>
+                <p className={styles.contacts__infoNote}>Звоните, мы на связи!</p>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className={styles.contacts__infoCard}>
+              <div className={styles.contacts__infoIconSecondary}>
+                <Mail size={24} />
+              </div>
+              <div className={styles.contacts__infoContent}>
+                <h3 className={styles.contacts__infoTitle}>Email</h3>
+                <a href={`mailto:${CONTACT_INFO.email}`} className={styles.contacts__infoLinkSecondary}>
+                  {CONTACT_INFO.email}
+                </a>
+                <p className={styles.contacts__infoNote}>Ответим быстро и оперативно</p>
+              </div>
+            </div>
+
+            {/* Адрес */}
+            <div className={styles.contacts__infoCard}>
+              <div className={styles.contacts__infoIconSecondary}>
+                <MapPin size={24} />
+              </div>
+              <div className={styles.contacts__infoContent}>
+                <h3 className={styles.contacts__infoTitle}>Адрес</h3>
+                <p className={styles.contacts__infoText}>{CONTACT_INFO.address}</p>
+                <p className={styles.contacts__infoNote}>Производство и офис</p>
+              </div>
+            </div>
+
+            {/* Режим работы */}
+            <div className={styles.contacts__infoCard}>
+              <div className={styles.contacts__infoIconSecondary}>
+                <Clock size={24} />
+              </div>
+              <div className={styles.contacts__infoContent}>
+                <h3 className={styles.contacts__infoTitle}>Режим работы</h3>
+                <ul className={styles.contacts__workHours}>
+                  <li>{CONTACT_INFO.workHours.weekdays}</li>
+                  <li>{CONTACT_INFO.workHours.saturday}</li>
+                  <li className={styles.contacts__workHoursOff}>{CONTACT_INFO.workHours.sunday}</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
       </div>
     </Layout>
   );

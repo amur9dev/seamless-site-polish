@@ -144,7 +144,7 @@
 
 @media (max-width: 768px) {
   .whyus {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   
   .whyus__container {
@@ -152,53 +152,48 @@
   }
   
   .whyus__title {
-    font-size: 32px;
+    font-size: 28px;
   }
   
   .whyus__subtitle {
-    font-size: 16px;
+    font-size: 15px;
   }
   
   .whyus__grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
   
   .whyus__card {
-    padding: 24px;
+    padding: 20px;
   }
   
+  /* Убираем hover на мобильных */
+  .whyus__card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Скрываем блок статистики на мобильных */
   .whyus__stats {
-    padding: 32px 24px;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  
-  .whyus__statValue {
-    font-size: 36px;
-  }
-  
-  .whyus__statLabel {
-    font-size: 14px;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .whyus__title {
-    font-size: 28px;
+    font-size: 24px;
   }
   
-  .whyus__stats {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .whyus__cardIcon {
+    width: 48px;
+    height: 48px;
   }
   
-  .whyus__stat {
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  .whyus__cardTitle {
+    font-size: 16px;
   }
   
-  .whyus__stat:last-child {
-    border-bottom: none;
+  .whyus__cardDescription {
+    font-size: 13px;
   }
 }

@@ -1,14 +1,16 @@
 /**
  * Страница Cases — наши работы
  * 
- * @description Портфолио выполненных проектов
+ * @description Портфолио выполненных проектов с мобильным слайдером
  */
 
-import { useEffect } from 'react';
-import { MapPin, Ruler, Calendar, Building2 } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
+import { MapPin, Ruler, Calendar, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Layout, Breadcrumbs } from '@/components/layout';
 import { ContactForm } from '@/components/sections';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
+import { useIsMobile } from '@/hooks/use-mobile';
+import styles from './Cases.module.css';
 
 /**
  * Все работы компании (заглушки)
@@ -81,6 +83,9 @@ const ALL_CASES = [
  */
 const CasesPage = () => {
   const { setMeta } = useSeoMeta();
+  const isMobile = useIsMobile();
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,164 +97,123 @@ const CasesPage = () => {
     });
   }, [setMeta]);
 
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index);
+    if (sliderRef.current) {
+      const slideWidth = sliderRef.current.offsetWidth;
+      sliderRef.current.scrollTo({
+        left: index * slideWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (sliderRef.current) {
+      const slideWidth = sliderRef.current.offsetWidth;
+      const newSlide = Math.round(sliderRef.current.scrollLeft / slideWidth);
+      if (newSlide !== currentSlide) {
+        setCurrentSlide(newSlide);
+      }
+    }
+  };
+
   return (
     <Layout withPadding>
-      <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 24px' }}>
+      <div className={styles.cases}>
         <Breadcrumbs items={[{ label: 'Наши работы' }]} />
 
         {/* Заголовок */}
-        <header style={{ marginBottom: '48px' }}>
-          <h1 style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '42px',
-            fontWeight: 700,
-            color: '#2D3748',
-            margin: '0 0 16px 0',
-          }}>
-            Наши работы
-          </h1>
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '18px',
-            color: '#718096',
-            lineHeight: 1.6,
-            maxWidth: '800px',
-            margin: 0,
-          }}>
+        <header className={styles.cases__header}>
+          <h1 className={styles.cases__title}>Наши работы</h1>
+          <p className={styles.cases__subtitle}>
             Фотографии выполненных проектов по остеклению в Ростове-на-Дону и Ростовской области. 
             За 16 лет работы мы реализовали более 500 проектов различной сложности.
           </p>
         </header>
 
-        {/* Галерея работ */}
-        <section style={{ marginBottom: '80px' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '24px',
-          }}>
-            {ALL_CASES.map((project) => (
-              <article
-                key={project.id}
-                style={{
-                  background: '#ffffff',
-                  border: '1px solid rgba(0, 51, 102, 0.08)',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                {/* Изображение */}
-                <div style={{
-                  position: 'relative',
-                  aspectRatio: '16/10',
-                  overflow: 'hidden',
-                }}>
-                  <img
-                    src={project.image}
-                    alt={`${project.title} — ${project.type} в Ростове-на-Дону, площадь ${project.area}`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                  <div style={{
-                    position: 'absolute',
-                    top: '16px',
-                    left: '16px',
-                    background: 'linear-gradient(135deg, #E30613 0%, #C00000 100%)',
-                    color: '#ffffff',
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    padding: '6px 12px',
-                    borderRadius: '6px',
-                  }}>
-                    {project.type}
+        {/* Галерея работ - Десктоп */}
+        {!isMobile && (
+          <section className={styles.cases__gallery}>
+            <div className={styles.cases__grid}>
+              {ALL_CASES.map((project) => (
+                <article key={project.id} className={styles.cases__card}>
+                  <div className={styles.cases__cardImage}>
+                    <img src={project.image} alt={`${project.title} — ${project.type}`} />
+                    <div className={styles.cases__cardBadge}>{project.type}</div>
                   </div>
-                </div>
-
-                {/* Контент */}
-                <div style={{ padding: '24px' }}>
-                  <h2 style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '18px',
-                    fontWeight: 600,
-                    color: '#2D3748',
-                    margin: '0 0 12px 0',
-                  }}>
-                    {project.title}
-                  </h2>
-                  
-                  <p style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: '14px',
-                    color: '#718096',
-                    lineHeight: 1.6,
-                    margin: '0 0 16px 0',
-                  }}>
-                    {project.description}
-                  </p>
-
-                  {/* Детали */}
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '12px',
-                    paddingTop: '16px',
-                    borderTop: '1px solid rgba(0, 51, 102, 0.06)',
-                  }}>
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: '13px',
-                      color: '#718096',
-                    }}>
-                      <MapPin size={14} />
-                      {project.location.split(',')[0]}
-                    </div>
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: '13px',
-                      color: '#718096',
-                    }}>
-                      <Ruler size={14} />
-                      {project.area}
-                    </div>
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: '13px',
-                      color: '#718096',
-                    }}>
-                      <Calendar size={14} />
-                      {project.year}
-                    </div>
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: '13px',
-                      color: '#718096',
-                    }}>
-                      <Building2 size={14} />
-                      {project.type}
+                  <div className={styles.cases__cardContent}>
+                    <h2 className={styles.cases__cardTitle}>{project.title}</h2>
+                    <p className={styles.cases__cardDescription}>{project.description}</p>
+                    <div className={styles.cases__cardMeta}>
+                      <span className={styles.cases__cardMetaItem}>
+                        <MapPin size={14} />
+                        {project.location}
+                      </span>
+                      <span className={styles.cases__cardMetaItem}>
+                        <Ruler size={14} />
+                        {project.area}
+                      </span>
+                      <span className={styles.cases__cardMetaItem}>
+                        <Calendar size={14} />
+                        {project.year}
+                      </span>
+                      <span className={styles.cases__cardMetaItem}>
+                        <Building2 size={14} />
+                        {project.type}
+                      </span>
                     </div>
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Галерея работ - Мобильный слайдер */}
+        {isMobile && (
+          <section className={styles.cases__sliderSection}>
+            <div 
+              className={styles.cases__slider} 
+              ref={sliderRef}
+              onScroll={handleScroll}
+            >
+              {ALL_CASES.map((project) => (
+                <article key={project.id} className={styles.cases__slide}>
+                  <div className={styles.cases__slideImage}>
+                    <img src={project.image} alt={`${project.title} — ${project.type}`} />
+                    <div className={styles.cases__cardBadge}>{project.type}</div>
+                  </div>
+                  <div className={styles.cases__slideContent}>
+                    <h2 className={styles.cases__cardTitle}>{project.title}</h2>
+                    <p className={styles.cases__cardDescription}>{project.description}</p>
+                    <div className={styles.cases__cardMeta}>
+                      <span className={styles.cases__cardMetaItem}>
+                        <MapPin size={14} />
+                        {project.location}
+                      </span>
+                      <span className={styles.cases__cardMetaItem}>
+                        <Calendar size={14} />
+                        {project.year}
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            {/* Индикаторы слайдера */}
+            <div className={styles.cases__dots}>
+              {ALL_CASES.map((_, index) => (
+                <button
+                  key={index}
+                  className={`${styles.cases__dot} ${index === currentSlide ? styles['cases__dot--active'] : ''}`}
+                  onClick={() => handleSlideChange(index)}
+                  aria-label={`Слайд ${index + 1}`}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
       </div>
 

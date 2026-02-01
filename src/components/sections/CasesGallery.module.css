@@ -40,7 +40,7 @@
 
 .cases__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -151,7 +151,7 @@
 }
 
 /* Адаптивность */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .cases__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -159,33 +159,83 @@
 
 @media (max-width: 768px) {
   .cases {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   
   .cases__container {
     padding: 0 16px;
   }
   
-  .cases__title {
-    font-size: 32px;
+  .cases__header {
+    margin-bottom: 32px;
   }
   
-  .cases__grid {
-    gap: 16px;
-  }
-}
-
-@media (max-width: 480px) {
   .cases__title {
     font-size: 28px;
   }
   
+  .cases__subtitle {
+    font-size: 15px;
+  }
+  
   .cases__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  
+  /* Убираем hover эффекты на мобильных */
+  .cases__card:hover .cases__cardImage {
+    transform: none;
+  }
+  
+  .cases__card:hover .cases__cardOverlay {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(0, 64, 126, 0.9) 100%
+    );
+  }
+  
+  .cases__cardOverlay {
+    padding: 12px;
+  }
+  
+  .cases__cardBadge {
+    top: 8px;
+    left: 8px;
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .cases__cardTitle {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  
+  .cases__cardInfo {
+    gap: 8px;
+  }
+  
+  .cases__cardInfoItem {
+    font-size: 11px;
   }
   
   .cases__button {
     width: 100%;
     justify-content: center;
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+  
+  .cases__button:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cases__title {
+    font-size: 24px;
   }
 }

@@ -102,8 +102,6 @@
   display: inline-block;
 }
 
-/* Подчёркивание убрано */
-
 /* Подзаголовок */
 .hero__subtitle {
   font-family: 'Inter', sans-serif;
@@ -205,46 +203,6 @@
   border-color: rgba(255, 255, 255, 0.6);
 }
 
-/* Индикатор прокрутки */
-.hero__scrollIndicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.7);
-  animation: bounce 2s infinite;
-}
-
-.hero__scrollIcon {
-  width: 30px;
-  height: 50px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  padding-top: 8px;
-}
-
-.hero__scrollDot {
-  width: 6px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 3px;
-  animation: scrollDown 2s infinite;
-}
-
-.hero__scrollText {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 /* Анимации */
 @keyframes fadeInUp {
   from {
@@ -265,26 +223,6 @@
   50% {
     opacity: 0.7;
     transform: scale(1.2);
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-}
-
-@keyframes scrollDown {
-  0%, 100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(12px);
   }
 }
 
@@ -317,7 +255,7 @@
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 100px 0 100px;
+    padding: 100px 0 60px;
   }
   
   .hero__container {
@@ -340,17 +278,27 @@
     margin-bottom: 32px;
   }
   
+  /* Benefits в 2 колонки на мобильных */
+  .hero__benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
   .hero__benefit {
-    padding: 14px 16px;
+    padding: 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
   }
   
   .hero__benefitIcon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
   
   .hero__benefitText {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .hero__actions {
@@ -363,8 +311,10 @@
     font-size: 16px;
   }
   
-  .hero__scrollIndicator {
-    display: none;
+  /* Убираем hover эффекты на мобильных */
+  .hero__button--primary:hover,
+  .hero__button--secondary:hover {
+    transform: none;
   }
 }
 
@@ -375,5 +325,18 @@
   
   .hero__subtitle {
     font-size: 16px;
+  }
+  
+  .hero__benefit {
+    padding: 10px;
+  }
+  
+  .hero__benefitIcon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .hero__benefitText {
+    font-size: 11px;
   }
 }

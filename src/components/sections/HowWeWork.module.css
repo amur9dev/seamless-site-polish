@@ -117,18 +117,46 @@
   margin: 0;
 }
 
-.howwework__stepTime {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 12px;
-  padding: 6px 12px;
-  background: rgba(0, 163, 213, 0.1);
-  border-radius: 20px;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: #00a3d5;
+/* Мобильный слайдер */
+.howwework__slider {
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.howwework__sliderTrack {
+  display: flex;
+}
+
+.howwework__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.howwework__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.howwework__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 64, 126, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.howwework__dot--active {
+  background: #ff342f;
+  transform: scale(1.2);
 }
 
 /* Адаптивность */
@@ -149,34 +177,42 @@
 
 @media (max-width: 768px) {
   .howwework {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   
   .howwework__container {
     padding: 0 16px;
   }
   
-  .howwework__title {
-    font-size: 32px;
+  .howwework__header {
+    margin-bottom: 32px;
   }
   
-  .howwework__step {
-    flex: 0 0 calc(50% - 20px);
+  .howwework__title {
+    font-size: 28px;
+  }
+  
+  .howwework__subtitle {
+    font-size: 15px;
   }
   
   .howwework__stepNumber {
     width: 64px;
     height: 64px;
     font-size: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  .howwework__title {
-    font-size: 28px;
+    margin-bottom: 16px;
   }
   
-  .howwework__step {
-    flex: 0 0 100%;
+  .howwework__stepIcon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .howwework__stepTitle {
+    font-size: 16px;
+  }
+  
+  .howwework__stepDescription {
+    font-size: 13px;
   }
 }
