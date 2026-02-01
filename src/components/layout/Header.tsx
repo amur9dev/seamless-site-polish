@@ -125,8 +125,11 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           {/* Логотип */}
           <div className={styles.header__logo}>
             <Link to="/" className={styles.header__logoLink}>
-              <div className={styles.header__logoIcon}>С</div>
-              <span className={styles.header__logoText}>СТЕКЛОПРОМ</span>
+              <img 
+                src="/images/logo.png" 
+                alt="Стеклопром" 
+                className={styles.header__logoImage}
+              />
             </Link>
           </div>
 

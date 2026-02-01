@@ -35,32 +35,15 @@
 .footer__logo {
   display: flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
   margin-bottom: 24px;
 }
 
-.footer__logoIcon {
-  width: 48px;
+.footer__logoImage {
   height: 48px;
-  background: #ff342f;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fefefe;
-  font-family: 'Inter', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
-}
-
-.footer__logoText {
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #fefefe;
-  letter-spacing: -0.5px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .footer__description {

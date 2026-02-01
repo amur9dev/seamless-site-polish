@@ -4,9 +4,9 @@
  * @description Форма с валидацией и маской телефона
  */
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Check, Loader2, ArrowRight } from 'lucide-react';
-import { formatPhone, isValidPhone } from '@/utils/phoneFormat';
+import { formatPhone, isValidPhone, handlePhoneKeyDown } from '@/utils/phoneFormat';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 
@@ -69,7 +69,7 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
       setIsSubmitted(true);
       toast({
         title: "Заявка отправлена!",
-        description: "Мы перезвоним вам в течение 15 минут",
+        description: "Мы свяжемся с вами в ближайшее время",
       });
       onSuccess?.();
 
@@ -94,6 +94,12 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
     const formatted = formatPhone(e.target.value);
     setFormData((prev) => ({ ...prev, phone: formatted }));
     if (errors.phone) setErrors((prev) => ({ ...prev, phone: '' }));
+  };
+
+  const handlePhoneKeyDownWrapper = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    handlePhoneKeyDown(e, formData.phone, (value) => {
+      setFormData((prev) => ({ ...prev, phone: value }));
+    });
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -157,6 +163,7 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
           id="callback-phone"
           value={formData.phone}
           onChange={handlePhoneChange}
+          onKeyDown={handlePhoneKeyDownWrapper}
           placeholder="+7 (___) ___-__-__"
           className={`w-full px-4 py-3 border-2 rounded-xl font-inter text-[#2D3748] bg-[#F8F9FA] transition-all outline-none ${
             errors.phone

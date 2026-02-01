@@ -51,7 +51,7 @@
   left: 60px;
   right: 60px;
   height: 2px;
-  background: linear-gradient(90deg, #ff342f 0%, #00a3d5 100%);
+  background: linear-gradient(90deg, #00407e 0%, #00a3d5 100%);
   z-index: 0;
 }
 
@@ -66,7 +66,7 @@
 .howwework__stepNumber {
   width: 80px;
   height: 80px;
-  background: #ff342f;
+  background: #00407e;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@
   font-size: 28px;
   font-weight: 800;
   color: #fefefe;
-  box-shadow: 0 8px 24px rgba(255, 52, 47, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 64, 126, 0.3);
   position: relative;
 }
 
@@ -84,7 +84,7 @@
   content: '';
   position: absolute;
   inset: -4px;
-  border: 2px solid rgba(255, 52, 47, 0.2);
+  border: 2px solid rgba(0, 64, 126, 0.2);
   border-radius: 50%;
 }
 

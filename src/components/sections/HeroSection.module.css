@@ -192,25 +192,11 @@
   box-shadow: 0 6px 20px rgba(255, 52, 47, 0.35);
 }
 
-.hero__button--primary:hover {
-  background: #e02e29;
-  box-shadow: 0 8px 28px rgba(255, 52, 47, 0.45);
-}
-
-.hero__button--primary:active {
-  box-shadow: 0 4px 16px rgba(255, 52, 47, 0.35);
-}
-
 .hero__button--secondary {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
   border: 2px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
-}
-
-.hero__button--secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Индикатор прокрутки */

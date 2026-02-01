@@ -33,19 +33,12 @@ const FOOTER_LINKS = {
     items: [
       { label: 'Однокамерные', href: '/catalog/odnokamernye' },
       { label: 'Двухкамерные', href: '/catalog/dvuhkamernye' },
-      { label: 'Мультифункциональные', href: '/catalog/multifunktsionalnye' },
       { label: 'Энергосберегающие', href: '/catalog/energosberegayushchie' },
       { label: 'Шумоизоляционные', href: '/catalog/shumoizolyatsionnye' },
-      { label: 'Ударопрочные', href: '/catalog/udaroprochnye' },
-      { label: 'Тонированные', href: '/catalog/tonirovannye' },
+      { label: 'Мультифункциональные', href: '/catalog/multifunktsionalnye' },
       { label: 'Солнцезащитные', href: '/catalog/solntsezashchitnye' },
-      { label: 'С закалённым стеклом', href: '/catalog/zakalennye' },
-      { label: 'С триплексом', href: '/catalog/triplex' },
-      { label: 'С раскладкой', href: '/catalog/s-raskladkoy' },
-      { label: 'Теплосберегающие', href: '/catalog/teplosberegayushchie' },
-      { label: 'Зеркальные', href: '/catalog/zerkalnye' },
-      { label: 'Нестандартные', href: '/catalog/nestandartnye' },
-      { label: 'С газонаполнением', href: '/catalog/s-gazonapolneniem' },
+      { label: 'Ударопрочные', href: '/catalog/udaroprochnye' },
+      { label: 'Матовые', href: '/catalog/matovye' },
     ],
   },
   company: {
@@ -75,8 +68,11 @@ const Footer = () => {
             {/* Колонка с логотипом и контактами */}
             <div className={styles.footer__brand}>
               <Link to="/" className={styles.footer__logo}>
-                <div className={styles.footer__logoIcon}>С</div>
-                <span className={styles.footer__logoText}>СТЕКЛОПРОМ</span>
+                <img 
+                  src="/images/logo.png" 
+                  alt="Стеклопром" 
+                  className={styles.footer__logoImage}
+                />
               </Link>
               
               <p className={styles.footer__description}>

@@ -6,7 +6,7 @@
 
 import { useState } from 'react';
 import { Phone, Clock, Gift, ArrowRight, Check, Loader2 } from 'lucide-react';
-import { formatPhone, isValidPhone } from '@/utils/phoneFormat';
+import { formatPhone, isValidPhone, handlePhoneKeyDown } from '@/utils/phoneFormat';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import styles from './ContactForm.module.css';
@@ -17,7 +17,7 @@ import styles from './ContactForm.module.css';
 const BENEFITS = [
   {
     icon: Phone,
-    text: 'Перезвоним за 30 минут',
+    text: 'Перезвоним оперативно',
   },
   {
     icon: Clock,
@@ -39,10 +39,6 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handlePhoneFormat = (value: string): string => {
-    return formatPhone(value);
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,7 +63,7 @@ const ContactForm = () => {
       setIsSubmitted(true);
       toast({
         title: "Заявка отправлена!",
-        description: "Мы перезвоним вам в течение 30 минут",
+        description: "Мы свяжемся с вами в ближайшее время",
       });
       
       setTimeout(() => {
@@ -89,10 +85,16 @@ const ContactForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (name === 'phone') {
-      setFormData(prev => ({ ...prev, phone: handlePhoneFormat(value) }));
+      setFormData(prev => ({ ...prev, phone: formatPhone(value) }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
+  };
+
+  const handlePhoneKeyDownWrapper = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    handlePhoneKeyDown(e, formData.phone, (value) => {
+      setFormData((prev) => ({ ...prev, phone: value }));
+    });
   };
 
   return (
@@ -143,13 +145,13 @@ const ContactForm = () => {
                 Заявка отправлена!
               </h3>
               <p className={styles.contactform__formSubtitle}>
-                Мы перезвоним вам в течение 30 минут
+                Мы свяжемся с вами в ближайшее время
               </p>
             </div>
           ) : (
             <form className={styles.contactform__form} onSubmit={handleSubmit}>
               <h3 className={styles.contactform__formTitle}>
-                Получите расчёт за 30 минут
+                Получите расчёт быстро
               </h3>
               <p className={styles.contactform__formSubtitle}>
                 Заполните форму и мы перезвоним вам
@@ -181,6 +183,7 @@ const ContactForm = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  onKeyDown={handlePhoneKeyDownWrapper}
                   placeholder="+7 (___) ___-__-__"
                   className={styles.contactform__formInput}
                   required
