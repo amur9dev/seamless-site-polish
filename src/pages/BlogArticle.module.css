@@ -269,40 +269,101 @@
   .article {
     padding-top: 24px;
   }
+  
+  .article__container {
+    padding: 0 16px 48px;
+  }
 
   .article__title {
-    font-size: 28px;
-  }
-
-  .article__meta {
-    gap: 16px;
-  }
-
-  .article__content {
-    font-size: 16px;
-  }
-
-  .article__content h2 {
     font-size: 24px;
   }
 
-  .article__content h3 {
+  .article__meta {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .article__metaItem {
+    font-size: 12px;
+  }
+
+  .article__image {
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .article__content {
+    font-size: 15px;
+  }
+
+  .article__content h2 {
     font-size: 20px;
+    margin: 32px 0 16px 0;
+  }
+
+  .article__content h3 {
+    font-size: 18px;
+  }
+  
+  .article__content table {
+    font-size: 13px;
+  }
+  
+  .article__content th,
+  .article__content td {
+    padding: 10px 12px;
   }
 
   .article__cta {
-    padding: 28px 20px;
+    padding: 24px 16px;
+    border-radius: 12px;
   }
 
   .article__ctaTitle {
-    font-size: 20px;
+    font-size: 18px;
+  }
+  
+  .article__ctaText {
+    font-size: 14px;
+  }
+  
+  .article__ctaButton {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+
+  .related {
+    margin-top: 48px;
+    padding-top: 32px;
   }
 
   .related__grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .related__title {
-    font-size: 24px;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .related__cardContent {
+    padding: 16px;
+  }
+  
+  .related__cardTitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article__title {
+    font-size: 20px;
+  }
+  
+  .article__content {
+    font-size: 14px;
+    line-height: 1.7;
   }
 }

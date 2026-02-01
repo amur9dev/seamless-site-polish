@@ -37,7 +37,14 @@ const NAV_ITEMS = [
       { label: 'Мультифункциональные', href: '/catalog/multifunktsionalnye' },
       { label: 'Солнцезащитные', href: '/catalog/solntsezashchitnye' },
       { label: 'Ударопрочные', href: '/catalog/udaroprochnye' },
-      { label: 'Матовые', href: '/catalog/matovye' },
+      { label: 'Тонированные', href: '/catalog/tonirovannye' },
+      { label: 'С закаленным стеклом', href: '/catalog/zakalennye' },
+      { label: 'С триплексом', href: '/catalog/tripleks' },
+      { label: 'С декоративной раскладкой', href: '/catalog/dekorativnye' },
+      { label: 'Теплосберегающие', href: '/catalog/teplosberegayushchie' },
+      { label: 'Зеркальные', href: '/catalog/zerkalnye' },
+      { label: 'Нестандартные', href: '/catalog/nestandartnye' },
+      { label: 'С газонаполнением', href: '/catalog/gazonapolnennye' },
     ],
   },
   { label: 'Услуги', href: '/services' },
@@ -126,7 +133,7 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           <div className={styles.header__logo}>
             <Link to="/" className={styles.header__logoLink}>
               <img 
-                src="/images/logo.png" 
+                src="/images/logo.svg" 
                 alt="Стеклопром" 
                 className={styles.header__logoImage}
               />

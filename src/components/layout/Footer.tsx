@@ -38,7 +38,13 @@ const FOOTER_LINKS = {
       { label: 'Мультифункциональные', href: '/catalog/multifunktsionalnye' },
       { label: 'Солнцезащитные', href: '/catalog/solntsezashchitnye' },
       { label: 'Ударопрочные', href: '/catalog/udaroprochnye' },
-      { label: 'Матовые', href: '/catalog/matovye' },
+      { label: 'Тонированные', href: '/catalog/tonirovannye' },
+      { label: 'С закаленным стеклом', href: '/catalog/zakalennye' },
+      { label: 'С триплексом', href: '/catalog/tripleks' },
+      { label: 'Теплосберегающие', href: '/catalog/teplosberegayushchie' },
+      { label: 'Зеркальные', href: '/catalog/zerkalnye' },
+      { label: 'Нестандартные', href: '/catalog/nestandartnye' },
+      { label: 'С газонаполнением', href: '/catalog/gazonapolnennye' },
     ],
   },
   company: {
@@ -69,7 +75,7 @@ const Footer = () => {
             <div className={styles.footer__brand}>
               <Link to="/" className={styles.footer__logo}>
                 <img 
-                  src="/images/logo.png" 
+                  src="/images/logo.svg" 
                   alt="Стеклопром" 
                   className={styles.footer__logoImage}
                 />

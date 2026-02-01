@@ -475,7 +475,7 @@
 
 @media (max-width: 768px) {
   .catalog {
-    padding-top: 70px;
+    padding-top: 24px;
   }
   
   .catalog__container {
@@ -483,35 +483,119 @@
   }
   
   .catalog__title {
-    font-size: 32px;
+    font-size: 28px;
+  }
+  
+  .catalog__description {
+    font-size: 14px;
   }
   
   .catalog__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 12px;
+  }
+  
+  .catalog__cardContent {
+    padding: 16px;
+  }
+  
+  .catalog__cardTitle {
+    font-size: 15px;
+  }
+  
+  .catalog__cardDescription {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+  
+  .catalog__cardFeatures {
+    display: none;
+  }
+  
+  .catalog__cardPrice {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .catalog__cardButton {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .catalogDetail {
+    padding: 24px 0 48px;
   }
   
   .catalogDetail__title {
-    font-size: 28px;
+    font-size: 24px;
+  }
+  
+  .catalogDetail__description {
+    font-size: 14px;
+  }
+  
+  .catalogDetail__price {
+    font-size: 26px;
+  }
+  
+  .catalogDetail__button {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  
+  .catalogDetail__sectionTitle {
+    font-size: 22px;
+    margin-bottom: 20px;
   }
   
   .catalogDetail__advantagesGrid,
   .catalogDetail__forWhomGrid,
   .catalogDetail__pricesGrid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .catalogDetail__advantage,
+  .catalogDetail__forWhomCard {
+    padding: 20px;
   }
   
   .catalogDetail__prices {
-    padding: 24px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+  
+  .catalogDetail__priceCard {
+    padding: 20px;
+  }
+  
+  .catalogDetail__tableCell {
+    padding: 14px 16px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .catalog__title {
-    font-size: 28px;
+    font-size: 24px;
   }
   
   .catalog__grid {
     grid-template-columns: 1fr;
+  }
+  
+  .catalog__cardDescription {
+    display: block;
+    -webkit-line-clamp: 3;
+  }
+  
+  .catalog__cardFeatures {
+    display: block;
+  }
+  
+  .catalogDetail__title {
+    font-size: 22px;
   }
 }

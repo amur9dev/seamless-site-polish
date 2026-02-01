@@ -178,17 +178,58 @@
   .blog {
     padding-top: 24px;
   }
+  
+  .blog__container {
+    padding: 0 16px 48px;
+  }
+
+  .blog__header {
+    margin-bottom: 32px;
+  }
 
   .blog__title {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .blog__subtitle {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .blog__grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
+  }
+  
+  .blog__cardContent {
+    padding: 16px;
+  }
+  
+  .blog__cardTitle {
+    font-size: 16px;
+  }
+  
+  .blog__cardExcerpt {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+  
+  .blog__cardMeta {
+    gap: 12px;
+  }
+  
+  .blog__cardMetaItem {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog__title {
+    font-size: 22px;
+  }
+  
+  .blog__cardFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
