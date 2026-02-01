@@ -1,11 +1,13 @@
 /**
  * Секция HowWeWork — этапы работы
  * 
- * @description 5 этапов работы с клиентом
+ * @description 5 этапов работы с клиентом с мобильным слайдером
  */
 
+import { useState, useEffect, useRef } from 'react';
 import { Phone, Ruler, Factory, Truck, CheckCircle } from 'lucide-react';
 import styles from './HowWeWork.module.css';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 /**
  * Этапы работы
@@ -47,6 +49,32 @@ const STEPS = [
  * Компонент HowWeWork
  */
 const HowWeWork = () => {
+  const isMobile = useIsMobile();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Автопрокрутка для мобильного слайдера
+  useEffect(() => {
+    if (!isMobile) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % STEPS.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
+  // Прокрутка слайдера при изменении текущего слайда
+  useEffect(() => {
+    if (!isMobile || !sliderRef.current) return;
+    
+    const slideWidth = sliderRef.current.offsetWidth;
+    sliderRef.current.scrollTo({
+      left: currentSlide * slideWidth,
+      behavior: 'smooth',
+    });
+  }, [currentSlide, isMobile]);
+
   return (
     <section className={styles.howwework}>
       <div className={styles.howwework__container}>
@@ -61,25 +89,64 @@ const HowWeWork = () => {
           </p>
         </header>
 
-        {/* Этапы */}
-        <div className={styles.howwework__steps}>
-          {STEPS.map((step) => (
-            <div key={step.number} className={styles.howwework__step}>
-              <div className={styles.howwework__stepNumber}>
-                {step.number}
+        {/* Десктопные этапы */}
+        {!isMobile && (
+          <div className={styles.howwework__steps}>
+            {STEPS.map((step) => (
+              <div key={step.number} className={styles.howwework__step}>
+                <div className={styles.howwework__stepNumber}>
+                  {step.number}
+                </div>
+                <div className={styles.howwework__stepIcon}>
+                  <step.icon size={24} />
+                </div>
+                <h3 className={styles.howwework__stepTitle}>
+                  {step.title}
+                </h3>
+                <p className={styles.howwework__stepDescription}>
+                  {step.description}
+                </p>
               </div>
-              <div className={styles.howwework__stepIcon}>
-                <step.icon size={24} />
+            ))}
+          </div>
+        )}
+
+        {/* Мобильный слайдер */}
+        {isMobile && (
+          <>
+            <div className={styles.howwework__slider} ref={sliderRef}>
+              <div className={styles.howwework__sliderTrack}>
+                {STEPS.map((step) => (
+                  <div key={step.number} className={styles.howwework__slide}>
+                    <div className={styles.howwework__stepNumber}>
+                      {step.number}
+                    </div>
+                    <div className={styles.howwework__stepIcon}>
+                      <step.icon size={24} />
+                    </div>
+                    <h3 className={styles.howwework__stepTitle}>
+                      {step.title}
+                    </h3>
+                    <p className={styles.howwework__stepDescription}>
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <h3 className={styles.howwework__stepTitle}>
-                {step.title}
-              </h3>
-              <p className={styles.howwework__stepDescription}>
-                {step.description}
-              </p>
             </div>
-          ))}
-        </div>
+            {/* Индикаторы */}
+            <div className={styles.howwework__dots}>
+              {STEPS.map((_, index) => (
+                <button
+                  key={index}
+                  className={`${styles.howwework__dot} ${index === currentSlide ? styles['howwework__dot--active'] : ''}`}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Этап ${index + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

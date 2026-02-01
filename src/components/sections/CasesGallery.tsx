@@ -1,7 +1,7 @@
 /**
  * Секция CasesGallery — галерея работ
  * 
- * @description 6 примеров работ в сетке
+ * @description 4 примера работ на главной (2 колонки на мобильных)
  */
 
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { MapPin, Ruler, ArrowRight } from 'lucide-react';
 import styles from './CasesGallery.module.css';
 
 /**
- * Примеры работ для главной страницы
+ * Примеры работ для главной страницы (4 карточки)
  */
 const CASES = [
   {
@@ -31,6 +31,14 @@ const CASES = [
   {
     id: 3,
     title: 'Проект №3',
+    type: 'Тип объекта',
+    location: 'Ростов-на-Дону',
+    area: '— м²',
+    image: '/placeholder.svg',
+  },
+  {
+    id: 4,
+    title: 'Проект №4',
     type: 'Тип объекта',
     location: 'Ростов-на-Дону',
     area: '— м²',

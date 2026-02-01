@@ -11,6 +11,7 @@ import { ContactForm } from '@/components/sections';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
 import Modal from '@/components/ui/Modal';
 import CallbackForm from '@/components/ui/CallbackForm';
+import styles from './Services.module.css';
 
 /**
  * Основные услуги
@@ -62,7 +63,7 @@ const MAIN_SERVICES = [
 ];
 
 /**
- * Дополнительные услуги — реальная информация
+ * Дополнительные услуги
  */
 const ADDITIONAL_SERVICES = [
   {
@@ -98,7 +99,6 @@ const ServicesPage = () => {
       keywords: 'услуги производство стеклопакетов Ростов, изготовление стеклопакетов на заказ, доставка стеклопакетов Ростов-на-Дону, замер окон бесплатно, монтаж стеклопакетов',
     });
 
-    // Добавляем структурированные данные для услуг
     const serviceSchema = {
       '@context': 'https://schema.org',
       '@type': 'Service',
@@ -143,307 +143,75 @@ const ServicesPage = () => {
 
   return (
     <Layout withPadding>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+      <div className={styles.services}>
         <Breadcrumbs items={[{ label: 'Услуги' }]} />
 
         {/* Заголовок */}
-        <header style={{ marginBottom: '48px' }}>
-          <h1 style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '36px',
-            fontWeight: 700,
-            color: '#00407e',
-            margin: '0 0 12px 0',
-          }}>
-            Наши услуги
-          </h1>
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '16px',
-            color: '#718096',
-            lineHeight: 1.7,
-            maxWidth: '700px',
-            margin: 0,
-          }}>
+        <header className={styles.services__header}>
+          <h1 className={styles.services__title}>Наши услуги</h1>
+          <p className={styles.services__subtitle}>
             Полный цикл услуг по изготовлению и доставке стеклопакетов в Ростове-на-Дону. 
             От замера до установки — работаем быстро, качественно и с гарантией.
           </p>
         </header>
 
         {/* Основные услуги */}
-        <section style={{ marginBottom: '60px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            {MAIN_SERVICES.map((service, idx) => (
-              <article
-                key={service.id}
-                id={service.id}
-                style={{
-                  background: '#ffffff',
-                  border: '1px solid rgba(0, 64, 126, 0.08)',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  scrollMarginTop: '160px',
-                  boxShadow: '0 2px 12px rgba(0, 64, 126, 0.04)',
-                }}
-              >
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: idx % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr',
-                  gap: '0',
-                  alignItems: 'stretch',
-                }}>
-                  {/* Изображение */}
-                  {idx % 2 === 0 && (
-                    <div style={{
-                      position: 'relative',
-                      minHeight: '320px',
-                    }}>
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        style={{
-                          position: 'absolute',
-                          inset: 0,
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                        }}
-                      />
-                    </div>
-                  )}
-                  
-                  {/* Контент */}
-                  <div style={{ padding: '36px 40px' }}>
-                    <div style={{
-                      width: '52px',
-                      height: '52px',
-                      background: '#ff342f',
-                      borderRadius: '12px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: '20px',
-                      boxShadow: '0 4px 12px rgba(255, 52, 47, 0.2)',
-                    }}>
-                      <service.icon size={26} color="#ffffff" />
-                    </div>
-                    
-                    <h2 style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: '24px',
-                      fontWeight: 700,
-                      color: '#00407e',
-                      margin: '0 0 12px 0',
-                    }}>
-                      {service.title}
-                    </h2>
-                    
-                    <p style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: '15px',
-                      color: '#718096',
-                      lineHeight: 1.7,
-                      margin: '0 0 20px 0',
-                    }}>
-                      {service.description}
-                    </p>
-
-                    <ul style={{ listStyle: 'none', margin: '0 0 24px 0', padding: 0 }}>
-                      {service.features.map((feature, i) => (
-                        <li
-                          key={i}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '10px',
-                            fontFamily: "'Inter', sans-serif",
-                            fontSize: '14px',
-                            color: '#2D3748',
-                            padding: '8px 0',
-                            borderBottom: '1px solid rgba(0, 64, 126, 0.06)',
-                          }}
-                        >
-                          <Check size={16} color="#00a3d5" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      flexWrap: 'wrap',
-                      gap: '16px',
-                    }}>
-                      <div style={{
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: '24px',
-                        fontWeight: 700,
-                        color: '#ff342f',
-                      }}>
-                        {service.price}
-                      </div>
-                      <button 
-                        onClick={() => setIsModalOpen(true)}
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          padding: '12px 24px',
-                          background: '#ff342f',
-                          color: '#ffffff',
-                          border: 'none',
-                          borderRadius: '10px',
-                          fontFamily: "'Inter', sans-serif",
-                          fontSize: '15px',
-                          fontWeight: 600,
-                          cursor: 'pointer',
-                          boxShadow: '0 4px 12px rgba(255, 52, 47, 0.2)',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseOver={(e) => e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 52, 47, 0.35)'}
-                        onMouseOut={(e) => e.currentTarget.style.boxShadow = '0 4px 12px rgba(255, 52, 47, 0.2)'}
-                      >
-                        Заказать
-                        <ArrowRight size={18} />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Изображение справа для нечётных */}
-                  {idx % 2 !== 0 && (
-                    <div style={{
-                      position: 'relative',
-                      minHeight: '320px',
-                    }}>
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        style={{
-                          position: 'absolute',
-                          inset: 0,
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                        }}
-                      />
-                    </div>
-                  )}
+        <section className={styles.services__main}>
+          {MAIN_SERVICES.map((service, idx) => (
+            <article key={service.id} className={styles.services__card}>
+              <div className={styles.services__cardImage}>
+                <img src={service.image} alt={service.title} />
+              </div>
+              <div className={styles.services__cardContent}>
+                <div className={styles.services__cardIcon}>
+                  <service.icon size={26} color="#ffffff" />
                 </div>
-              </article>
-            ))}
-          </div>
+                <h2 className={styles.services__cardTitle}>{service.title}</h2>
+                <p className={styles.services__cardDescription}>{service.description}</p>
+                <ul className={styles.services__cardFeatures}>
+                  {service.features.map((feature, i) => (
+                    <li key={i} className={styles.services__cardFeature}>
+                      <Check size={16} color="#00a3d5" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <div className={styles.services__cardFooter}>
+                  <span className={styles.services__cardPrice}>{service.price}</span>
+                  <button 
+                    className={styles.services__cardButton}
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    Заказать
+                    <ArrowRight size={18} />
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
         </section>
 
         {/* Дополнительные услуги */}
-        <section style={{ marginBottom: '60px' }}>
-          <h2 style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '28px',
-            fontWeight: 700,
-            color: '#00407e',
-            margin: '0 0 28px 0',
-            textAlign: 'center',
-          }}>
-            Дополнительные услуги
-          </h2>
-          
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '20px',
-          }}>
+        <section className={styles.services__additional}>
+          <h2 className={styles.services__additionalTitle}>Дополнительные услуги</h2>
+          <div className={styles.services__additionalGrid}>
             {ADDITIONAL_SERVICES.map((service, index) => (
-              <div
-                key={index}
-                style={{
-                  background: '#f8f9fb',
-                  borderRadius: '14px',
-                  padding: '28px',
-                  textAlign: 'center',
-                  border: '1px solid rgba(0, 64, 126, 0.06)',
-                }}
-              >
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  background: 'rgba(0, 163, 213, 0.1)',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 16px',
-                  color: '#00a3d5',
-                }}>
+              <div key={index} className={styles.services__additionalCard}>
+                <div className={styles.services__additionalIcon}>
                   <service.icon size={24} />
                 </div>
-                <h3 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '17px',
-                  fontWeight: 600,
-                  color: '#00407e',
-                  margin: '0 0 8px 0',
-                }}>
-                  {service.title}
-                </h3>
-                <p style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '14px',
-                  color: '#718096',
-                  lineHeight: 1.6,
-                  margin: 0,
-                }}>
-                  {service.description}
-                </p>
+                <h3 className={styles.services__additionalCardTitle}>{service.title}</h3>
+                <p className={styles.services__additionalCardDescription}>{service.description}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* CTA блок */}
-        <section style={{
-          background: 'linear-gradient(135deg, #00407e 0%, #003366 100%)',
-          borderRadius: '20px',
-          padding: '40px',
-          marginBottom: '60px',
-          textAlign: 'center',
-          color: '#ffffff',
-        }}>
-          <h2 style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '26px',
-            fontWeight: 700,
-            margin: '0 0 12px 0',
-          }}>
-            Нужна консультация?
-          </h2>
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '15px',
-            opacity: 0.85,
-            margin: '0 0 20px 0',
-          }}>
-            Позвоните нам или оставьте заявку — ответим на все вопросы
-          </p>
-          <a
-            href="tel:+78631234567"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '14px 28px',
-              background: '#ff342f',
-              color: '#ffffff',
-              border: 'none',
-              borderRadius: '10px',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '17px',
-              fontWeight: 600,
-              textDecoration: 'none',
-              boxShadow: '0 4px 16px rgba(255, 52, 47, 0.3)',
-            }}
-          >
+        <section className={styles.services__cta}>
+          <h2 className={styles.services__ctaTitle}>Нужна консультация?</h2>
+          <p className={styles.services__ctaText}>Позвоните нам или оставьте заявку — ответим на все вопросы</p>
+          <a href="tel:+78631234567" className={styles.services__ctaButton}>
             <Phone size={20} />
             +7 (863) 123-45-67
           </a>
@@ -453,11 +221,7 @@ const ServicesPage = () => {
       <ContactForm />
 
       {/* Модальное окно заказа */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Заказать звонок"
-      >
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Заказать звонок">
         <CallbackForm onSuccess={() => setIsModalOpen(false)} />
       </Modal>
     </Layout>

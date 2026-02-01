@@ -31,7 +31,7 @@ const Preloader = ({ minDuration = 1500 }: PreloaderProps) => {
     <div className={`${styles.preloader} ${isFading ? styles['preloader--fading'] : ''}`}>
       <div className={styles.preloader__content}>
         <img 
-          src="/images/logo.svg" 
+          src="/images/logo.png" 
           alt="Стеклопром" 
           className={styles.preloader__logo}
         />

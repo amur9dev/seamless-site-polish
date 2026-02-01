@@ -133,7 +133,7 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           <div className={styles.header__logo}>
             <Link to="/" className={styles.header__logoLink}>
               <img 
-                src="/images/logo.svg" 
+                src="/images/logo.png" 
                 alt="Стеклопром" 
                 className={styles.header__logoImage}
               />

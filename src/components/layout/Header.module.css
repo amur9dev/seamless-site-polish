@@ -110,7 +110,7 @@
 }
 
 .header__logoImage {
-  height: 90px;
+  height: 108px;
   width: auto;
   object-fit: contain;
 }
@@ -360,6 +360,9 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .header__mobilePanel--open {
