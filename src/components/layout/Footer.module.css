@@ -34,15 +34,25 @@
 
 .footer__logo {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   text-decoration: none;
   margin-bottom: 24px;
+  gap: 8px;
 }
 
 .footer__logoImage {
-  height: 72px;
+  height: 60px;
   width: auto;
   object-fit: contain;
+}
+
+.footer__logoText {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fefefe;
+  letter-spacing: 1px;
 }
 
 .footer__description {

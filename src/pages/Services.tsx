@@ -163,9 +163,6 @@ const ServicesPage = () => {
                 <img src={service.image} alt={service.title} />
               </div>
               <div className={styles.services__cardContent}>
-                <div className={styles.services__cardIcon}>
-                  <service.icon size={26} color="#ffffff" />
-                </div>
                 <h2 className={styles.services__cardTitle}>{service.title}</h2>
                 <p className={styles.services__cardDescription}>{service.description}</p>
                 <ul className={styles.services__cardFeatures}>

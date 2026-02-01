@@ -262,42 +262,42 @@ const AboutPage = () => {
           
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '24px',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '16px',
             marginBottom: '48px',
           }}>
             {PRODUCTION_FEATURES.map((feature, index) => (
               <div key={index} style={{
                 background: 'rgba(255, 255, 255, 0.1)',
-                borderRadius: '16px',
-                padding: '28px',
+                borderRadius: '12px',
+                padding: 'clamp(16px, 3vw, 28px)',
                 backdropFilter: 'blur(10px)',
               }}>
                 <div style={{
-                  width: '48px',
-                  height: '48px',
+                  width: 'clamp(36px, 6vw, 48px)',
+                  height: 'clamp(36px, 6vw, 48px)',
                   background: 'rgba(255, 255, 255, 0.15)',
-                  borderRadius: '12px',
+                  borderRadius: '10px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '16px',
+                  marginBottom: '12px',
                 }}>
-                  <feature.icon size={24} />
+                  <feature.icon size={20} />
                 </div>
                 <h3 style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: '18px',
+                  fontSize: 'clamp(14px, 2vw, 18px)',
                   fontWeight: 600,
-                  margin: '0 0 8px 0',
+                  margin: '0 0 6px 0',
                 }}>
                   {feature.title}
                 </h3>
                 <p style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: '14px',
+                  fontSize: 'clamp(12px, 1.5vw, 14px)',
                   opacity: 0.85,
-                  lineHeight: 1.6,
+                  lineHeight: 1.5,
                   margin: 0,
                 }}>
                   {feature.description}

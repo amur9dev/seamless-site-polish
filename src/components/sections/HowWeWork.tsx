@@ -53,18 +53,18 @@ const HowWeWork = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  // Автопрокрутка для мобильного слайдера
+  // Автопрокрутка для мобильного слайдера — ускоренная до 2с
   useEffect(() => {
     if (!isMobile) return;
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % STEPS.length);
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [isMobile]);
 
-  // Прокрутка слайдера при изменении текущего слайда
+  // Плавная прокрутка слайдера при изменении текущего слайда
   useEffect(() => {
     if (!isMobile || !sliderRef.current) return;
     

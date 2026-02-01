@@ -27,7 +27,7 @@
 }
 
 .preloader__logo {
-  height: 120px;
+  height: 80px;
   width: auto;
   animation: pulse 1.5s ease-in-out infinite;
 }
