@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 import { Layout, Breadcrumbs } from '@/components/layout';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
-import { formatPhone } from '@/utils/phoneFormat';
+import { formatPhone, handlePhoneKeyDown } from '@/utils/phoneFormat';
 
 /**
  * Контактная информация — телефон и email будут обновлены клиентом
@@ -115,6 +115,12 @@ const ContactsPage = () => {
         [name]: value,
       });
     }
+  };
+
+  const handlePhoneKeyDownWrapper = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    handlePhoneKeyDown(e, formData.phone, (value) => {
+      setFormData((prev) => ({ ...prev, phone: value }));
+    });
   };
 
   return (
@@ -262,7 +268,7 @@ const ContactsPage = () => {
                   color: '#718096',
                   margin: '8px 0 0 0',
                 }}>
-                  Ответим в течение часа
+                  Ответим быстро и оперативно
                 </p>
               </div>
             </div>
@@ -464,6 +470,7 @@ const ContactsPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  onKeyDown={handlePhoneKeyDownWrapper}
                   placeholder="+7 (___) ___-__-__"
                   required
                   style={{
@@ -569,6 +576,15 @@ const ContactsPage = () => {
                   justifyContent: 'center',
                   gap: '10px',
                   boxShadow: '0 6px 20px rgba(227, 6, 19, 0.35)',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.boxShadow = '0 8px 28px rgba(227, 6, 19, 0.45)';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(227, 6, 19, 0.35)';
+                  e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
                 Отправить заявку

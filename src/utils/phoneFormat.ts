@@ -5,21 +5,9 @@
  * Улучшенная версия с корректным удалением символов
  */
 
-export const formatPhone = (value: string, prevValue?: string): string => {
+export const formatPhone = (value: string): string => {
   // Убираем все нецифровые символы
   let digits = value.replace(/\D/g, '');
-  
-  // Если пользователь стирает и дошёл до скобок — удаляем предыдущую цифру
-  if (prevValue && value.length < prevValue.length) {
-    // Получаем цифры из предыдущего значения
-    const prevDigits = prevValue.replace(/\D/g, '');
-    
-    // Если количество цифр не изменилось (удалили только форматирование),
-    // принудительно удаляем последнюю цифру
-    if (digits.length === prevDigits.length && digits.length > 1) {
-      digits = digits.slice(0, -1);
-    }
-  }
   
   // Ограничиваем длину до 11 цифр
   if (digits.length > 11) {
@@ -68,26 +56,28 @@ export const formatPhone = (value: string, prevValue?: string): string => {
   return result;
 };
 
-/**
- * Хук для управления маской телефона с корректным удалением
- */
-export const handlePhoneInput = (
-  e: React.ChangeEvent<HTMLInputElement>,
-  prevValue: string,
-  setValue: (value: string) => void
-) => {
-  const newValue = e.target.value;
-  const formatted = formatPhone(newValue, prevValue);
-  setValue(formatted);
-};
-
 export const isValidPhone = (phone: string): boolean => {
   const digits = phone.replace(/\D/g, '');
   return digits.length === 11 && digits[0] === '7';
 };
 
 /**
- * Обработчик нажатия клавиш для корректного удаления
+ * Обработчик ввода телефона с поддержкой удаления через скобки
+ */
+export const handlePhoneInputChange = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  setValue: (value: string) => void
+) => {
+  const input = e.target;
+  const newValue = input.value;
+  
+  // Просто форматируем введённое значение
+  const formatted = formatPhone(newValue);
+  setValue(formatted);
+};
+
+/**
+ * Обработчик клавиш для корректного удаления через скобки
  */
 export const handlePhoneKeyDown = (
   e: React.KeyboardEvent<HTMLInputElement>,
@@ -97,23 +87,35 @@ export const handlePhoneKeyDown = (
   if (e.key === 'Backspace') {
     const input = e.target as HTMLInputElement;
     const cursorPos = input.selectionStart || 0;
+    const selectionEnd = input.selectionEnd || 0;
     
-    // Если курсор после закрывающей скобки или после пробела после неё
-    // Позиция 8 = "+7 (XXX)" — закрывающая скобка
-    // Позиция 9 = "+7 (XXX) " — пробел после скобки
-    if (cursorPos === 9 || cursorPos === 8) {
+    // Если есть выделение, позволяем стандартное поведение
+    if (cursorPos !== selectionEnd) {
+      return;
+    }
+    
+    // Получаем текущие цифры
+    const digits = currentValue.replace(/\D/g, '');
+    
+    // Определяем, какой символ перед курсором
+    const charBefore = currentValue[cursorPos - 1];
+    
+    // Если перед курсором спец.символ (скобка, пробел, дефис), удаляем предыдущую цифру
+    if (charBefore && /[\s\(\)\-]/.test(charBefore)) {
       e.preventDefault();
-      // Удаляем последнюю цифру кода региона
-      const digits = currentValue.replace(/\D/g, '');
+      
+      // Удаляем последнюю цифру
       if (digits.length > 1) {
         const newDigits = digits.slice(0, -1);
-        const formatted = formatPhone('+' + newDigits, currentValue);
+        const formatted = formatPhone('+' + newDigits);
         setValue(formatted);
         
         // Устанавливаем курсор в конец
         setTimeout(() => {
           input.setSelectionRange(formatted.length, formatted.length);
         }, 0);
+      } else {
+        setValue('');
       }
     }
   }

@@ -100,7 +100,6 @@
 .header__logoLink {
   display: flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
   transition: transform 0.2s ease;
 }
@@ -109,27 +108,10 @@
   transform: scale(1.02);
 }
 
-.header__logoIcon {
-  width: 48px;
+.header__logoImage {
   height: 48px;
-  background: #ff342f;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fefefe;
-  font-family: 'Inter', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
-}
-
-.header__logoText {
-  font-family: 'Inter', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #00a3d5;
-  letter-spacing: -0.5px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Навигация */

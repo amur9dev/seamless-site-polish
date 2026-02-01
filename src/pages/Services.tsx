@@ -4,11 +4,13 @@
  * @description Полное описание услуг компании «Стеклопром»
  */
 
-import { useEffect } from 'react';
-import { Factory, Truck, Shield, Ruler, Wrench, Clock, Phone, Check, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Factory, Truck, Shield, Ruler, Phone, Check, ArrowRight } from 'lucide-react';
 import { Layout, Breadcrumbs } from '@/components/layout';
 import { ContactForm } from '@/components/sections';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
+import Modal from '@/components/ui/Modal';
+import CallbackForm from '@/components/ui/CallbackForm';
 
 /**
  * Основные услуги
@@ -67,19 +69,16 @@ const ADDITIONAL_SERVICES = [
     icon: Phone,
     title: 'Бесплатная консультация',
     description: 'Консультируем по телефону, отвечаем на вопросы мгновенно. Помогаем подобрать оптимальное решение.',
-    time: 'Сразу',
   },
   {
     icon: Ruler,
     title: 'Расчёт стоимости',
     description: 'Рассчитаем стоимость заказа по вашим размерам. Предоплата по договорённости.',
-    time: 'Быстро',
   },
   {
-    icon: Clock,
+    icon: Factory,
     title: 'Срочное изготовление',
     description: 'Производство стандартных стеклопакетов за 1 час. Индивидуальные сроки для сложных заказов.',
-    time: '1 час',
   },
 ];
 
@@ -88,6 +87,7 @@ const ADDITIONAL_SERVICES = [
  */
 const ServicesPage = () => {
   const { setMeta } = useSeoMeta();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -284,22 +284,27 @@ const ServicesPage = () => {
                       }}>
                         {service.price}
                       </div>
-                      <button style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        padding: '12px 24px',
-                        background: '#ff342f',
-                        color: '#ffffff',
-                        border: 'none',
-                        borderRadius: '10px',
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: '15px',
-                        fontWeight: 600,
-                        cursor: 'pointer',
-                        boxShadow: '0 4px 12px rgba(255, 52, 47, 0.2)',
-                        transition: 'box-shadow 0.2s ease',
-                      }}>
+                      <button 
+                        onClick={() => setIsModalOpen(true)}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          padding: '12px 24px',
+                          background: '#ff342f',
+                          color: '#ffffff',
+                          border: 'none',
+                          borderRadius: '10px',
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: '15px',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          boxShadow: '0 4px 12px rgba(255, 52, 47, 0.2)',
+                          transition: 'all 0.2s ease',
+                        }}
+                        onMouseOver={(e) => e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 52, 47, 0.35)'}
+                        onMouseOut={(e) => e.currentTarget.style.boxShadow = '0 4px 12px rgba(255, 52, 47, 0.2)'}
+                      >
                         Заказать
                         <ArrowRight size={18} />
                       </button>
@@ -387,25 +392,10 @@ const ServicesPage = () => {
                   fontSize: '14px',
                   color: '#718096',
                   lineHeight: 1.6,
-                  margin: '0 0 14px 0',
+                  margin: 0,
                 }}>
                   {service.description}
                 </p>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '6px 14px',
-                  background: 'rgba(255, 52, 47, 0.08)',
-                  borderRadius: '20px',
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  color: '#ff342f',
-                }}>
-                  <Clock size={14} />
-                  {service.time}
-                </div>
               </div>
             ))}
           </div>
@@ -461,6 +451,15 @@ const ServicesPage = () => {
       </div>
 
       <ContactForm />
+
+      {/* Модальное окно заказа */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Заказать звонок"
+      >
+        <CallbackForm onSuccess={() => setIsModalOpen(false)} />
+      </Modal>
     </Layout>
   );
 };
