@@ -5,13 +5,15 @@
  * SEO: Основные ключи — стеклопакеты Ростов-на-Дону, виды стеклопакетов, каталог стеклопакетов
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowRight, Thermometer, Volume2, Sun, Shield, Home, Building2, Warehouse, Layers, Square, Snowflake, Palette, Lock, Zap, Sparkles, Eye, Grid3X3, Droplets } from 'lucide-react';
 import { Layout, Breadcrumbs } from '@/components/layout';
 import { ContactForm } from '@/components/sections';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
 import { generateProductSchema } from '@/utils/seo';
+import Modal from '@/components/ui/Modal';
+import CallbackForm from '@/components/ui/CallbackForm';
 import styles from './Catalog.module.css';
 
 /**
@@ -551,6 +553,7 @@ const PRODUCTS = [
 const CatalogPage = () => {
   const { productType } = useParams<{ productType: string }>();
   const { setMeta } = useSeoMeta();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Находим текущий продукт
   const currentProduct = productType 
@@ -640,7 +643,10 @@ const CatalogPage = () => {
                 <div className={styles.catalogDetail__price}>
                   {currentProduct.price} <span className={styles.catalogDetail__priceLabel}>₽/м²</span>
                 </div>
-                <button className={styles.catalogDetail__button}>
+                <button 
+                  className={styles.catalogDetail__button}
+                  onClick={() => setIsModalOpen(true)}
+                >
                   Рассчитать стоимость
                   <ArrowRight size={20} />
                 </button>
@@ -738,6 +744,11 @@ const CatalogPage = () => {
         </section>
 
         <ContactForm />
+
+        {/* Модальное окно расчёта */}
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Рассчитать стоимость">
+          <CallbackForm onSuccess={() => setIsModalOpen(false)} />
+        </Modal>
       </Layout>
     );
   }

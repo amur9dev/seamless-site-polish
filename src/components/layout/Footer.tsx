@@ -75,10 +75,11 @@ const Footer = () => {
             <div className={styles.footer__brand}>
               <Link to="/" className={styles.footer__logo}>
                 <img 
-                  src="/images/logo.png" 
+                  src="/images/logo_footer.png" 
                   alt="Стеклопром" 
                   className={styles.footer__logoImage}
                 />
+                <span className={styles.footer__logoText}>СТЕКЛОПРОМ</span>
               </Link>
               
               <p className={styles.footer__description}>

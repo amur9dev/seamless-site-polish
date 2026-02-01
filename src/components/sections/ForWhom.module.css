@@ -146,6 +146,19 @@
   .forwhom__card {
     padding: 24px;
   }
+  
+  /* Убираем hover эффекты на мобильных */
+  .forwhom__card:hover {
+    transform: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  
+  .forwhom__card:hover .forwhom__cardIcon {
+    background: rgba(0, 163, 213, 0.1);
+    color: #00a3d5;
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 @media (max-width: 480px) {

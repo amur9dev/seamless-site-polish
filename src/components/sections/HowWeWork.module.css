@@ -78,6 +78,7 @@
   color: #fefefe;
   box-shadow: 0 8px 24px rgba(255, 52, 47, 0.3);
   position: relative;
+  flex-shrink: 0;
 }
 
 .howwework__stepNumber::after {
@@ -117,23 +118,28 @@
   margin: 0;
 }
 
-/* Мобильный слайдер */
+/* Мобильный слайдер — плавная карусель */
 .howwework__slider {
   overflow: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
 .howwework__sliderTrack {
   display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .howwework__slide {
   flex: 0 0 100%;
   scroll-snap-align: center;
   text-align: center;
-  padding: 0 16px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .howwework__dots {
