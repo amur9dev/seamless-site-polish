@@ -144,8 +144,8 @@
   gap: 4px;
   padding: 10px 14px;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
   color: #00407e;
   text-decoration: none;
   border-radius: 8px;
@@ -474,7 +474,8 @@
   
   .header__menuLink {
     padding: 10px 10px;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
   }
 }
 
@@ -493,6 +494,15 @@
   
   .header__mobilePanel {
     display: block;
+  }
+  
+  .header__mobileControls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header__mobileHeaderPhone {
+    display: none;
   }
 }
 
@@ -516,10 +526,35 @@
   .header__logoText {
     font-size: 18px;
   }
+  
+  /* Телефон рядом с бургером */
+  .header__mobileHeaderPhone {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #00a3d5;
+    text-decoration: none;
+    margin-right: 12px;
+  }
+  
+  .header__mobileHeaderPhone:hover {
+    color: #ff342f;
+  }
 }
 
 @media (max-width: 480px) {
   .header__logoText {
+    display: none;
+  }
+  
+  .header__mobileHeaderPhone {
+    font-size: 13px;
+  }
+  
+  .header__mobileHeaderPhone span {
     display: none;
   }
 }

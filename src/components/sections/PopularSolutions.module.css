@@ -42,15 +42,15 @@
   margin: 0 auto;
 }
 
-/* Сетка карточек */
+/* Сетка карточек — равная ширина */
 .solutions__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 32px;
 }
 
-/* Карточка продукта - одинаковая высота */
+/* Карточка продукта - одинаковая ширина и высота */
 .solutions__card {
   position: relative;
   background: #fefefe;
@@ -62,6 +62,8 @@
   flex-direction: column;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   min-height: 100%;
+  width: 100%;
+  min-width: 0;
 }
 
 
@@ -90,17 +92,23 @@
   box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
 }
 
-/* Иконка продукта */
-.solutions__cardIcon {
-  width: 52px;
-  height: 52px;
-  background: rgba(0, 163, 213, 0.1);
-  border-radius: 12px;
+/* Изображение продукта */
+.solutions__cardImageWrapper {
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e2e8f0 100%);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
-  color: #00a3d5;
+}
+
+.solutions__cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Заголовок карточки */
@@ -241,13 +249,13 @@
 /* Адаптивность */
 @media (max-width: 1200px) {
   .solutions__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .solutions {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   
   .solutions__container {
@@ -255,11 +263,11 @@
   }
   
   .solutions__title {
-    font-size: 32px;
+    font-size: 28px;
   }
   
   .solutions__subtitle {
-    font-size: 16px;
+    font-size: 15px;
   }
   
   .solutions__grid {
@@ -268,17 +276,53 @@
   }
   
   .solutions__card {
-    padding: 24px;
+    padding: 20px;
+  }
+  
+  /* Убираем hover на мобильных */
+  .solutions__card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+  
+  .solutions__cardButton:hover {
+    background: transparent;
+    border-color: rgba(0, 64, 126, 0.15);
+    color: #00a3d5;
+  }
+  
+  .solutions__card--popular .solutions__cardButton:hover {
+    background: #ff342f;
+    box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
   }
 }
 
 @media (max-width: 480px) {
   .solutions__title {
-    font-size: 28px;
+    font-size: 24px;
   }
   
   .solutions__allButton {
     width: 100%;
     justify-content: center;
+  }
+  
+  .solutions__card {
+    padding: 16px;
+  }
+  
+  .solutions__cardTitle {
+    font-size: 18px;
+    padding-right: 0;
+  }
+  
+  .solutions__card--popular .solutions__cardTitle {
+    padding-right: 70px;
+  }
+  
+  .solutions__cardBadge {
+    top: 12px;
+    right: 12px;
+    font-size: 10px;
+    padding: 5px 10px;
   }
 }

@@ -6,10 +6,11 @@
  * 
  * ИНСТРУКЦИЯ ДЛЯ КОНТЕНТ-МЕНЕДЖЕРА:
  * - Продукты: измените PRODUCTS
+ * - Изображения: замените placeholder.svg на реальные фото
  */
 
 import { Link } from 'react-router-dom';
-import { ArrowRight, Layers, Thermometer, Volume2, Sun } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import styles from './PopularSolutions.module.css';
 
 /**
@@ -17,11 +18,12 @@ import styles from './PopularSolutions.module.css';
  * 
  * ИНСТРУКЦИЯ ДЛЯ КОНТЕНТ-МЕНЕДЖЕРА:
  * Редактируйте данные продуктов здесь
+ * Замените image на путь к реальному изображению
  */
 const PRODUCTS = [
   {
     id: 'dvuhkamernye',
-    icon: Layers,
+    image: '/placeholder.svg',
     title: 'Двухкамерные',
     description: 'Оптимальный выбор для жилых помещений с отличной тепло- и шумоизоляцией. Надёжный и проверенный вариант',
     features: ['Толщина 32-40 мм', 'Формула 4-12-4-12-4', 'Улучшенная изоляция'],
@@ -31,7 +33,7 @@ const PRODUCTS = [
   },
   {
     id: 'multifunktsionalnye',
-    icon: Sun,
+    image: '/placeholder.svg',
     title: 'Мультифункциональные',
     description: 'Сочетание энергосбережения, защиты от солнца и шумоизоляции в одном стеклопакете. Премиальное решение',
     features: ['Защита от УФ до 99%', 'Защита от жары', 'Энергосбережение'],
@@ -41,7 +43,7 @@ const PRODUCTS = [
   },
   {
     id: 'energosberegayushchie',
-    icon: Thermometer,
+    image: '/placeholder.svg',
     title: 'Энергосберегающие',
     description: 'Экономия на отоплении до 40% за счёт специального I-покрытия. Сохраняет тепло зимой и прохладу летом',
     features: ['I-стекло Low-E', 'Заполнение аргоном', 'Экономия до 40%'],
@@ -51,7 +53,7 @@ const PRODUCTS = [
   },
   {
     id: 'shumoizolyatsionnye',
-    icon: Volume2,
+    image: '/placeholder.svg',
     title: 'Шумоизоляционные',
     description: 'Тишина даже у оживлённой дороги благодаря многослойной конструкции. Снижение шума до 42 дБ',
     features: ['Триплекс', 'До 42 дБ изоляции', 'Разная толщина стёкол'],
@@ -95,9 +97,14 @@ const PopularSolutions = () => {
                 </div>
               )}
 
-              {/* Иконка */}
-              <div className={styles.solutions__cardIcon}>
-                <product.icon size={26} />
+              {/* Изображение продукта */}
+              <div className={styles.solutions__cardImageWrapper}>
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  className={styles.solutions__cardImage}
+                  loading="lazy"
+                />
               </div>
 
               {/* Заголовок */}
