@@ -1,57 +1,57 @@
 /**
  * Компонент Header — шапка сайта
- * 
+ *
  * @description Главное меню навигации с логотипом, контактами и мобильным меню
  * Использует БЭМ-методологию для именования классов
  */
 
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Phone, MapPin, Clock, ChevronDown } from 'lucide-react';
-import styles from './Header.module.css';
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Phone, MapPin, Clock, ChevronDown } from "lucide-react";
+import styles from "./Header.module.css";
 
 /**
  * Контактные данные компании
  * РЕАЛЬНЫЕ ДАННЫЕ — телефон будет обновлён клиентом
  */
 const CONTACTS = {
-  phone: '+7 (863) 123-45-67',
-  phoneHref: 'tel:+78631234567',
-  address: 'Ростов-на-Дону',
-  workHours: 'Пн-Сб: 8:00-18:00',
+  phone: "+7 (863) 123-45-67",
+  phoneHref: "tel:+78631234567",
+  address: "Ростов-на-Дону",
+  workHours: "Пн-Сб: 8:00-18:00",
 };
 
 /**
  * Пункты главного меню
  */
 const NAV_ITEMS = [
-  { label: 'Главная', href: '/' },
-  { 
-    label: 'Каталог', 
-    href: '/catalog',
+  { label: "Главная", href: "/" },
+  {
+    label: "Каталог",
+    href: "/catalog",
     dropdown: [
-      { label: 'Однокамерные', href: '/catalog/odnokamernye' },
-      { label: 'Двухкамерные', href: '/catalog/dvuhkamernye' },
-      { label: 'Энергосберегающие', href: '/catalog/energosberegayushchie' },
-      { label: 'Шумоизоляционные', href: '/catalog/shumoizolyatsionnye' },
-      { label: 'Мультифункциональные', href: '/catalog/multifunktsionalnye' },
-      { label: 'Солнцезащитные', href: '/catalog/solntsezashchitnye' },
-      { label: 'Ударопрочные', href: '/catalog/udaroprochnye' },
-      { label: 'Тонированные', href: '/catalog/tonirovannye' },
-      { label: 'С закаленным стеклом', href: '/catalog/zakalennye' },
-      { label: 'С триплексом', href: '/catalog/tripleks' },
-      { label: 'С декоративной раскладкой', href: '/catalog/dekorativnye' },
-      { label: 'Теплосберегающие', href: '/catalog/teplosberegayushchie' },
-      { label: 'Зеркальные', href: '/catalog/zerkalnye' },
-      { label: 'Нестандартные', href: '/catalog/nestandartnye' },
-      { label: 'С газонаполнением', href: '/catalog/gazonapolnennye' },
+      { label: "Однокамерные", href: "/catalog/odnokamernye" },
+      { label: "Двухкамерные", href: "/catalog/dvuhkamernye" },
+      { label: "Энергосберегающие", href: "/catalog/energosberegayushchie" },
+      { label: "Шумоизоляционные", href: "/catalog/shumoizolyatsionnye" },
+      { label: "Мультифункциональные", href: "/catalog/multifunktsionalnye" },
+      { label: "Солнцезащитные", href: "/catalog/solntsezashchitnye" },
+      { label: "Ударопрочные", href: "/catalog/udaroprochnye" },
+      { label: "Тонированные", href: "/catalog/tonirovannye" },
+      { label: "С закаленным стеклом", href: "/catalog/zakalennye" },
+      { label: "С триплексом", href: "/catalog/tripleks" },
+      { label: "С декоративной раскладкой", href: "/catalog/dekorativnye" },
+      { label: "Теплосберегающие", href: "/catalog/teplosberegayushchie" },
+      { label: "Зеркальные", href: "/catalog/zerkalnye" },
+      { label: "Нестандартные", href: "/catalog/nestandartnye" },
+      { label: "С газонаполнением", href: "/catalog/gazonapolnennye" },
     ],
   },
-  { label: 'Услуги', href: '/services' },
-  { label: 'О компании', href: '/about' },
-  { label: 'Наши работы', href: '/cases' },
-  { label: 'Блог', href: '/blog' },
-  { label: 'Контакты', href: '/contacts' },
+  { label: "Услуги", href: "/services" },
+  { label: "О компании", href: "/about" },
+  { label: "Наши работы", href: "/cases" },
+  { label: "Блог", href: "/blog" },
+  { label: "Контакты", href: "/contacts" },
 ];
 
 interface HeaderProps {
@@ -74,8 +74,8 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Закрытие мобильного меню при изменении маршрута
@@ -87,9 +87,9 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
   // Блокировка скролла при открытом мобильном меню
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
   }, [isMobileMenuOpen]);
 
@@ -98,14 +98,14 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
   };
 
   const isActiveLink = (href: string) => {
-    if (href === '/') {
-      return location.pathname === '/';
+    if (href === "/") {
+      return location.pathname === "/";
     }
     return location.pathname.startsWith(href);
   };
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles['header--scrolled'] : ''}`}>
+    <header className={`${styles.header} ${isScrolled ? styles["header--scrolled"] : ""}`}>
       {/* Верхняя полоса с контактами */}
       <div className={styles.header__topBar}>
         <div className={styles.header__topBarContainer}>
@@ -115,7 +115,7 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           </div>
           <div className={styles.header__topBarContacts}>
             <div className={styles.header__topBarWorkHours}>
-              <Clock size={14} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+              <Clock size={14} style={{ display: "inline", marginRight: "6px", verticalAlign: "middle" }} />
               {CONTACTS.workHours}
             </div>
             <a href={CONTACTS.phoneHref} className={styles.header__topBarPhone}>
@@ -132,11 +132,7 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           {/* Логотип */}
           <div className={styles.header__logo}>
             <Link to="/" className={styles.header__logoLink}>
-              <img 
-                src="/images/logo.png" 
-                alt="Стеклопром" 
-                className={styles.header__logoImage}
-              />
+              <img src="/images/logo.png" alt="Стеклопром" className={styles.header__logoImage} />
             </Link>
           </div>
 
@@ -144,16 +140,16 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           <nav className={styles.header__nav}>
             <ul className={styles.header__menu}>
               {NAV_ITEMS.map((item) => (
-                <li 
-                  key={item.href} 
-                  className={`${styles.header__menuItem} ${item.dropdown ? styles['header__menuItem--hasDropdown'] : ''}`}
+                <li
+                  key={item.href}
+                  className={`${styles.header__menuItem} ${item.dropdown ? styles["header__menuItem--hasDropdown"] : ""}`}
                   onMouseEnter={() => item.dropdown && setOpenDropdown(item.href)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <Link
                     to={item.href}
                     className={`${styles.header__menuLink} ${
-                      isActiveLink(item.href) ? styles['header__menuLink--active'] : ''
+                      isActiveLink(item.href) ? styles["header__menuLink--active"] : ""
                     }`}
                   >
                     {item.label}
@@ -162,7 +158,9 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
 
                   {/* Выпадающее меню */}
                   {item.dropdown && (
-                    <ul className={`${styles.header__dropdown} ${openDropdown === item.href ? styles['header__dropdown--open'] : ''}`}>
+                    <ul
+                      className={`${styles.header__dropdown} ${openDropdown === item.href ? styles["header__dropdown--open"] : ""}`}
+                    >
                       {item.dropdown.map((subItem) => (
                         <li key={subItem.href} className={styles.header__dropdownItem}>
                           <Link to={subItem.href} className={styles.header__dropdownLink}>
@@ -185,31 +183,19 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
               </div>
               <span>{CONTACTS.phone}</span>
             </a>
-            <button 
-              className={styles.header__callButton}
-              onClick={onOpenCallback}
-            >
+            <button className={styles.header__callButton} onClick={onOpenCallback}>
               Заказать звонок
             </button>
           </div>
 
           {/* Телефон и кнопка мобильного меню */}
           <div className={styles.header__mobileControls}>
-            <a 
-              href={CONTACTS.phoneHref} 
-              className={styles.header__mobileHeaderPhone}
-              aria-label="Позвонить"
-            >
-              <Phone size={18} />
-              <span>{CONTACTS.phone}</span>
-            </a>
-            
             <button
               className={`${styles.header__mobileMenuButton} ${
-                isMobileMenuOpen ? styles['header__mobileMenuButton--open'] : ''
+                isMobileMenuOpen ? styles["header__mobileMenuButton--open"] : ""
               }`}
               onClick={toggleMobileMenu}
-              aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+              aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
               aria-expanded={isMobileMenuOpen}
             >
               <span className={styles.header__mobileMenuIcon} />
@@ -220,11 +206,7 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
         </div>
 
         {/* Мобильная панель */}
-        <div
-          className={`${styles.header__mobilePanel} ${
-            isMobileMenuOpen ? styles['header__mobilePanel--open'] : ''
-          }`}
-        >
+        <div className={`${styles.header__mobilePanel} ${isMobileMenuOpen ? styles["header__mobilePanel--open"] : ""}`}>
           <nav>
             <ul className={styles.header__mobileMenu}>
               {NAV_ITEMS.map((item) => (
@@ -232,13 +214,13 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
                   {item.dropdown ? (
                     <>
                       <button
-                        className={`${styles.header__mobileMenuLink} ${styles['header__mobileMenuLink--hasDropdown']}`}
+                        className={`${styles.header__mobileMenuLink} ${styles["header__mobileMenuLink--hasDropdown"]}`}
                         onClick={() => setMobileDropdownOpen(mobileDropdownOpen === item.href ? null : item.href)}
                       >
                         {item.label}
-                        <ChevronDown 
-                          size={18} 
-                          className={`transition-transform ${mobileDropdownOpen === item.href ? 'rotate-180' : ''}`}
+                        <ChevronDown
+                          size={18}
+                          className={`transition-transform ${mobileDropdownOpen === item.href ? "rotate-180" : ""}`}
                         />
                       </button>
                       {mobileDropdownOpen === item.href && (
@@ -270,7 +252,7 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
                     <Link
                       to={item.href}
                       className={`${styles.header__mobileMenuLink} ${
-                        isActiveLink(item.href) ? styles['header__mobileMenuLink--active'] : ''
+                        isActiveLink(item.href) ? styles["header__mobileMenuLink--active"] : ""
                       }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -287,7 +269,7 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
               <Phone size={20} />
               {CONTACTS.phone}
             </a>
-            <button 
+            <button
               className={styles.header__mobileCallButton}
               onClick={() => {
                 setIsMobileMenuOpen(false);
