@@ -4,43 +4,44 @@
  */
 
 .howwework {
-  padding: 100px 0;
+  padding: 80px 0;
   background: #ffffff;
 }
 
 .howwework__container {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .howwework__header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
 }
 
 .howwework__title {
   font-family: 'Inter', sans-serif;
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 700;
   color: #00407e;
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
   letter-spacing: -0.5px;
 }
 
 .howwework__subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #718096;
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .howwework__steps {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
   position: relative;
 }
 
@@ -56,11 +57,9 @@
 }
 
 .howwework__step {
-  flex: 1;
   text-align: center;
   position: relative;
   z-index: 1;
-  padding: 0 16px;
 }
 
 .howwework__stepNumber {
@@ -71,7 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 24px;
+  margin: 0 auto 20px;
   font-family: 'Inter', sans-serif;
   font-size: 28px;
   font-weight: 800;
@@ -97,7 +96,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
+  margin: 0 auto 12px;
   color: #00a3d5;
 }
 
@@ -114,73 +113,42 @@
   font-size: 14px;
   font-weight: 400;
   color: #718096;
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
 }
 
-/* Мобильный слайдер — плавная карусель */
-.howwework__slider {
-  overflow: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-}
-
-.howwework__sliderTrack {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.howwework__slide {
-  flex: 0 0 100%;
-  scroll-snap-align: center;
-  text-align: center;
-  padding: 20px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.howwework__dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.howwework__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(0, 64, 126, 0.2);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.howwework__dot--active {
-  background: #ff342f;
-  transform: scale(1.2);
-}
-
-/* Адаптивность */
+/* Адаптивность 1024px — 3 + 2 раскладка */
 @media (max-width: 1024px) {
   .howwework__steps {
-    flex-wrap: wrap;
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
   }
   
   .howwework__steps::before {
     display: none;
   }
   
-  .howwework__step {
-    flex: 0 0 calc(33.333% - 27px);
+  /* 4 и 5 элементы по центру во второй строке */
+  .howwework__step:nth-child(4) {
+    grid-column: 1 / 2;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .howwework__step:nth-child(5) {
+    grid-column: 3 / 4;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  /* Центрируем 4 и 5 через отступы */
+  .howwework__step:nth-child(4),
+  .howwework__step:nth-child(5) {
+    justify-self: center;
   }
 }
 
+/* Мобильная версия — вертикальный список */
 @media (max-width: 768px) {
   .howwework {
     padding: 60px 0;
@@ -202,23 +170,72 @@
     font-size: 15px;
   }
   
+  .howwework__steps {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .howwework__step {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+    padding: 16px;
+    background: #f8f9fb;
+    border-radius: 12px;
+  }
+  
+  .howwework__step:nth-child(4),
+  .howwework__step:nth-child(5) {
+    grid-column: auto;
+    margin: 0;
+    justify-self: auto;
+  }
+  
   .howwework__stepNumber {
-    width: 64px;
-    height: 64px;
-    font-size: 24px;
-    margin-bottom: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  
+  .howwework__stepNumber::after {
+    inset: -3px;
   }
   
   .howwework__stepIcon {
-    width: 40px;
-    height: 40px;
+    display: none;
+  }
+  
+  .howwework__stepContent {
+    flex: 1;
   }
   
   .howwework__stepTitle {
     font-size: 16px;
+    margin-bottom: 4px;
   }
   
   .howwework__stepDescription {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .howwework__title {
+    font-size: 24px;
+  }
+  
+  .howwework__step {
+    padding: 14px;
+  }
+  
+  .howwework__stepNumber {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
   }
 }

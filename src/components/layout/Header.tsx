@@ -193,19 +193,30 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
             </button>
           </div>
 
-          {/* Кнопка мобильного меню */}
-          <button
-            className={`${styles.header__mobileMenuButton} ${
-              isMobileMenuOpen ? styles['header__mobileMenuButton--open'] : ''
-            }`}
-            onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
-            aria-expanded={isMobileMenuOpen}
-          >
-            <span className={styles.header__mobileMenuIcon} />
-            <span className={styles.header__mobileMenuIcon} />
-            <span className={styles.header__mobileMenuIcon} />
-          </button>
+          {/* Телефон и кнопка мобильного меню */}
+          <div className={styles.header__mobileControls}>
+            <a 
+              href={CONTACTS.phoneHref} 
+              className={styles.header__mobileHeaderPhone}
+              aria-label="Позвонить"
+            >
+              <Phone size={18} />
+              <span>{CONTACTS.phone}</span>
+            </a>
+            
+            <button
+              className={`${styles.header__mobileMenuButton} ${
+                isMobileMenuOpen ? styles['header__mobileMenuButton--open'] : ''
+              }`}
+              onClick={toggleMobileMenu}
+              aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className={styles.header__mobileMenuIcon} />
+              <span className={styles.header__mobileMenuIcon} />
+              <span className={styles.header__mobileMenuIcon} />
+            </button>
+          </div>
         </div>
 
         {/* Мобильная панель */}

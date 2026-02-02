@@ -12,24 +12,24 @@
 }
 
 .footer__main {
-  padding: 64px 0 40px;
+  padding: 56px 0 40px;
 }
 
 .footer__container {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 0.8fr;
   gap: 48px;
 }
 
 /* Колонка с логотипом и контактами */
 .footer__brand {
-  padding-right: 24px;
+  padding-right: 20px;
 }
 
 .footer__logo {
@@ -37,7 +37,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   gap: 8px;
 }
 
@@ -61,7 +61,7 @@
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
-  margin: 0 0 24px 0;
+  margin: 0 0 20px 0;
 }
 
 .footer__contacts {
@@ -72,43 +72,25 @@
 
 .footer__contactItem {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding: 8px;
-  margin-left: -8px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 6px 0;
 }
 
 .footer__contactItem:last-child {
   margin-bottom: 0;
 }
 
-.footer__contactItem:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.footer__contactItem:hover .footer__contactIcon {
-  background: rgba(255, 52, 47, 0.15);
-  color: #ff342f;
-}
-
-.footer__contactItem:hover .footer__contactLink,
-.footer__contactItem:hover .footer__contactText {
-  color: #ff342f;
-}
-
 .footer__contactIcon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all 0.2s ease;
 }
 
 .footer__contactLink {
@@ -120,12 +102,15 @@
   transition: color 0.2s ease;
 }
 
+.footer__contactLink:hover {
+  color: #ff342f;
+}
+
 .footer__contactText {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
-  transition: color 0.2s ease;
 }
 
 /* Колонки навигации */
@@ -135,10 +120,10 @@
 
 .footer__navTitle {
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: #fefefe;
-  margin: 0 0 20px 0;
+  margin: 0 0 16px 0;
 }
 
 .footer__navList {
@@ -148,7 +133,7 @@
 }
 
 .footer__navItem {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .footer__navItem:last-child {
@@ -157,14 +142,12 @@
 
 .footer__navLink {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  display: inline-block;
 }
 
 .footer__navLink:hover {
@@ -174,11 +157,11 @@
 /* Нижняя полоса */
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px 0;
+  padding: 20px 0;
 }
 
 .footer__bottomContainer {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -188,19 +171,19 @@
 
 .footer__copyright {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
   margin: 0;
 }
 
 .footer__legal {
   display: flex;
-  gap: 24px;
+  gap: 20px;
 }
 
 .footer__legalLink {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
   transition: color 0.2s ease;
@@ -213,8 +196,8 @@
 /* Адаптивность */
 @media (max-width: 1024px) {
   .footer__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
   
   .footer__brand {
@@ -225,7 +208,7 @@
 
 @media (max-width: 768px) {
   .footer__main {
-    padding: 60px 0 40px;
+    padding: 48px 0 32px;
   }
   
   .footer__container {
@@ -234,12 +217,28 @@
   
   .footer__grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
+  }
+  
+  .footer__logoImage {
+    height: 50px;
+  }
+  
+  .footer__logoText {
+    font-size: 18px;
+  }
+  
+  .footer__description {
+    font-size: 13px;
+  }
+  
+  .footer__navTitle {
+    font-size: 14px;
   }
   
   .footer__bottomContainer {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     text-align: center;
     padding: 0 16px;
   }
@@ -247,6 +246,37 @@
   .footer__legal {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
+    gap: 12px;
+  }
+  
+  /* Убираем hover на мобильных */
+  .footer__contactLink:hover,
+  .footer__navLink:hover,
+  .footer__legalLink:hover {
+    color: inherit;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__main {
+    padding: 40px 0 28px;
+  }
+  
+  .footer__logoImage {
+    height: 44px;
+  }
+  
+  .footer__logoText {
+    font-size: 16px;
+  }
+  
+  .footer__contactIcon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .footer__contactLink,
+  .footer__contactText {
+    font-size: 13px;
   }
 }
