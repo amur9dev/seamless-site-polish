@@ -68,15 +68,17 @@ const HowWeWork = () => {
               <div className={styles.howwework__stepNumber}>
                 {step.number}
               </div>
-              <div className={styles.howwework__stepIcon}>
-                <step.icon size={24} />
+              <div className={styles.howwework__stepContent}>
+                <div className={styles.howwework__stepIcon}>
+                  <step.icon size={24} />
+                </div>
+                <h3 className={styles.howwework__stepTitle}>
+                  {step.title}
+                </h3>
+                <p className={styles.howwework__stepDescription}>
+                  {step.description}
+                </p>
               </div>
-              <h3 className={styles.howwework__stepTitle}>
-                {step.title}
-              </h3>
-              <p className={styles.howwework__stepDescription}>
-                {step.description}
-              </p>
             </div>
           ))}
         </div>
