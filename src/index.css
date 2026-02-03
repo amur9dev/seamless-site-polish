@@ -55,8 +55,8 @@
 
     /* Тени — более мягкие и естественные */
     --shadow-card: 0 4px 20px rgba(0, 64, 126, 0.06);
-    --shadow-button: 0 4px 14px rgba(248, 96, 74, 0.2);
-    --shadow-button-hover: 0 6px 20px rgba(248, 96, 74, 0.3);
+    --shadow-button: 0 4px 14px rgba(229, 57, 53, 0.2);
+    --shadow-button-hover: 0 6px 20px rgba(229, 57, 53, 0.3);
 
     /* Сайдбар */
     --sidebar-background: 0 0% 98%;

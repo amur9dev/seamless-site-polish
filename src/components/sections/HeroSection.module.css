@@ -97,7 +97,7 @@
 }
 
 .hero__titleAccent {
-  color: #f8604a;
+  color: #ff342f;
   position: relative;
   display: inline-block;
 }
@@ -136,13 +136,13 @@
 .hero__benefitIcon {
   width: 44px;
   height: 44px;
-  background: #f8604a;
+  background: #ff342f;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(248, 96, 74, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 52, 47, 0.3);
 }
 
 .hero__benefitText {
@@ -179,14 +179,14 @@
 }
 
 .hero__button--primary {
-  background: #f8604a;
+  background: #ff342f;
   color: #fefefe;
-  box-shadow: 0 6px 20px rgba(248, 96, 74, 0.35);
+  box-shadow: 0 6px 20px rgba(255, 52, 47, 0.35);
 }
 
 .hero__button--primary:hover {
-  background: #e5503d;
-  box-shadow: 0 8px 28px rgba(248, 96, 74, 0.45);
+  background: #e02d29;
+  box-shadow: 0 8px 28px rgba(255, 52, 47, 0.45);
   transform: translateY(-2px);
 }
 

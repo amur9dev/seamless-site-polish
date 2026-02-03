@@ -133,7 +133,7 @@ const AboutPage = () => {
             <ul className={styles.about__advantages}>
               {ADVANTAGES.map((advantage, index) => (
                 <li key={index} className={styles.about__advantage}>
-                  <CheckCircle size={18} color="#f8604a" />
+                  <CheckCircle size={18} color="#ff342f" />
                   {advantage}
                 </li>
               ))}
@@ -170,7 +170,7 @@ const AboutPage = () => {
           </div>
           
           <div className={styles.about__productionLocation}>
-            <MapPin size={20} color="#f8604a" />
+            <MapPin size={20} color="#ff342f" />
             г. Ростов-на-Дону
           </div>
           <p className={styles.about__productionNote}>
@@ -207,7 +207,7 @@ const AboutPage = () => {
               <ul className={styles.about__guaranteeList}>
                 {['Сертификаты ГОСТ', 'Гарантийное обслуживание', 'Контроль качества'].map((item, i) => (
                   <li key={i} className={styles.about__guaranteeItem}>
-                    <CheckCircle size={14} color="#f8604a" />
+                    <CheckCircle size={14} color="#ff342f" />
                     {item}
                   </li>
                 ))}

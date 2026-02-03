@@ -134,7 +134,7 @@ const generateEmailHtml = (data: ContactFormData): string => {
           <!-- Кнопка звонка -->
           <tr>
             <td style="padding: 0 40px 32px;">
-              <a href="tel:${data.phone.replace(/[^\d+]/g, '')}" style="display: block; background: linear-gradient(135deg, #f8604a 0%, #e5503d 100%); color: #ffffff; text-align: center; padding: 16px 24px; border-radius: 12px; text-decoration: none; font-size: 16px; font-weight: 600; box-shadow: 0 4px 16px rgba(248, 96, 74, 0.3);">
+              <a href="tel:${data.phone.replace(/[^\d+]/g, '')}" style="display: block; background: linear-gradient(135deg, #ff342f 0%, #e02e29 100%); color: #ffffff; text-align: center; padding: 16px 24px; border-radius: 12px; text-decoration: none; font-size: 16px; font-weight: 600; box-shadow: 0 4px 16px rgba(255, 52, 47, 0.3);">
                 📞 Позвонить клиенту
               </a>
             </td>

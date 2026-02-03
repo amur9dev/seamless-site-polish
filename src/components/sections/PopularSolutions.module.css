@@ -72,7 +72,7 @@
 }
 
 .solutions__card--popular {
-  border: 2px solid #f8604a;
+  border: 2px solid #ff342f;
 }
 
 /* Бейдж популярного */
@@ -80,7 +80,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: #f8604a;
+  background: #ff342f;
   color: #fefefe;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
@@ -89,7 +89,7 @@
   letter-spacing: 0.5px;
   padding: 6px 12px;
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(248, 96, 74, 0.25);
+  box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
 }
 
 /* Изображение продукта */
@@ -172,7 +172,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #f8604a;
+  color: #ff342f;
   margin-bottom: 20px;
 }
 
@@ -209,14 +209,14 @@
 }
 
 .solutions__card--popular .solutions__cardButton {
-  background: #f8604a;
+  background: #ff342f;
   border-color: transparent;
   color: #fefefe;
-  box-shadow: 0 4px 12px rgba(248, 96, 74, 0.25);
+  box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
 }
 
 .solutions__card--popular .solutions__cardButton:hover {
-  box-shadow: 0 6px 20px rgba(248, 96, 74, 0.35);
+  box-shadow: 0 6px 20px rgba(255, 52, 47, 0.35);
 }
 
 /* Кнопка "Весь каталог" */
@@ -291,8 +291,8 @@
   }
   
   .solutions__card--popular .solutions__cardButton:hover {
-    background: #f8604a;
-    box-shadow: 0 4px 12px rgba(248, 96, 74, 0.25);
+    background: #ff342f;
+    box-shadow: 0 4px 12px rgba(255, 52, 47, 0.25);
   }
 }
 
