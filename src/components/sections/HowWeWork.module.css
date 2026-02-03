@@ -195,7 +195,7 @@
 
   .howwework__step {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
     gap: 16px;
     padding: 12px 0;
