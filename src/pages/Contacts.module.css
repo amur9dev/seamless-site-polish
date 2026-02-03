@@ -106,7 +106,7 @@
   gap: 10px;
   width: 100%;
   padding: 16px 32px;
-  background: #ff342f;
+  background: #f8604a;
   color: #ffffff;
   border: none;
   border-radius: 12px;
@@ -114,14 +114,14 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(255, 52, 47, 0.3);
+  box-shadow: 0 6px 20px rgba(248, 96, 74, 0.3);
   transition: box-shadow 0.2s ease, background 0.2s ease;
   margin-top: 8px;
 }
 
 .contacts__formButton:hover {
-  background: #e02d29;
-  box-shadow: 0 8px 28px rgba(255, 52, 47, 0.4);
+  background: #e5503d;
+  box-shadow: 0 8px 28px rgba(248, 96, 74, 0.4);
 }
 
 /* Контактная информация */
@@ -145,14 +145,56 @@
 .contacts__infoIcon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #E53935 0%, #D32F2F 100%);
+  background: linear-gradient(135deg, #f8604a 0%, #e5503d 100%);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: #ffffff;
-  box-shadow: 0 6px 16px rgba(229, 57, 53, 0.25);
+  box-shadow: 0 6px 16px rgba(248, 96, 74, 0.25);
+}
+
+/* Email — цвета Яндекс.Почты (оранжево-желтый) */
+.contacts__infoIconEmail {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #FFCC00 0%, #FF9500 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(255, 149, 0, 0.25);
+}
+
+/* Адрес — цвета Яндекс.Карт (зелёный) */
+.contacts__infoIconAddress {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25);
+}
+
+/* Режим работы — стилистика сайта (синий) */
+.contacts__infoIconSchedule {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #00a3d5 0%, #0077b3 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 163, 213, 0.25);
 }
 
 .contacts__infoIconSecondary {
@@ -303,8 +345,15 @@
   
   /* Убираем hover на мобильных */
   .contacts__formButton:hover {
-    box-shadow: 0 6px 20px rgba(255, 52, 47, 0.3);
-    background: #ff342f;
+    box-shadow: 0 6px 20px rgba(248, 96, 74, 0.3);
+    background: #f8604a;
+  }
+  
+  .contacts__infoIconEmail,
+  .contacts__infoIconAddress,
+  .contacts__infoIconSchedule {
+    width: 44px;
+    height: 44px;
   }
   
   /* Контактная информация в 2 колонки */
