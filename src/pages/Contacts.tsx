@@ -258,9 +258,9 @@ const ContactsPage = () => {
               </div>
             </div>
 
-            {/* Email */}
+            {/* Email — цвета Яндекс.Почты */}
             <div className={styles.contacts__infoCard}>
-              <div className={styles.contacts__infoIconSecondary}>
+              <div className={styles.contacts__infoIconEmail}>
                 <Mail size={24} />
               </div>
               <div className={styles.contacts__infoContent}>
@@ -272,9 +272,9 @@ const ContactsPage = () => {
               </div>
             </div>
 
-            {/* Адрес */}
+            {/* Адрес — цвета Яндекс.Карт */}
             <div className={styles.contacts__infoCard}>
-              <div className={styles.contacts__infoIconSecondary}>
+              <div className={styles.contacts__infoIconAddress}>
                 <MapPin size={24} />
               </div>
               <div className={styles.contacts__infoContent}>
@@ -284,9 +284,9 @@ const ContactsPage = () => {
               </div>
             </div>
 
-            {/* Режим работы */}
+            {/* Режим работы — стилистика сайта */}
             <div className={styles.contacts__infoCard}>
-              <div className={styles.contacts__infoIconSecondary}>
+              <div className={styles.contacts__infoIconSchedule}>
                 <Clock size={24} />
               </div>
               <div className={styles.contacts__infoContent}>
