@@ -145,14 +145,14 @@
 .contacts__infoIcon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #ff342f 0%, #e02e29 100%);
+  background: linear-gradient(135deg, #E53935 0%, #D32F2F 100%);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: #ffffff;
-  box-shadow: 0 6px 16px rgba(255, 52, 47, 0.25);
+  box-shadow: 0 6px 16px rgba(229, 57, 53, 0.25);
 }
 
 .contacts__infoIconSecondary {
@@ -165,6 +165,25 @@
   justify-content: center;
   flex-shrink: 0;
   color: #003366;
+}
+
+.contacts__socialLink {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #0077FF 0%, #0055CC 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 119, 255, 0.25);
+  transition: box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.contacts__socialLink:hover {
+  box-shadow: 0 8px 24px rgba(0, 119, 255, 0.35);
 }
 
 .contacts__infoContent {

@@ -142,7 +142,7 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
           className={`w-full px-4 py-3 border-2 rounded-xl font-inter text-[#2D3748] bg-[#F8F9FA] transition-all outline-none ${
             errors.name
               ? 'border-red-400 focus:border-red-500'
-              : 'border-gray-200 focus:border-[#E30613] focus:bg-white'
+              : 'border-gray-200 focus:border-[#00a3d5] focus:bg-white'
           }`}
         />
         {errors.name && (
@@ -168,7 +168,7 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
           className={`w-full px-4 py-3 border-2 rounded-xl font-inter text-[#2D3748] bg-[#F8F9FA] transition-all outline-none ${
             errors.phone
               ? 'border-red-400 focus:border-red-500'
-              : 'border-gray-200 focus:border-[#E30613] focus:bg-white'
+              : 'border-gray-200 focus:border-[#00a3d5] focus:bg-white'
           }`}
         />
         {errors.phone && (
@@ -186,11 +186,11 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
               setFormData((prev) => ({ ...prev, agreement: e.target.checked }));
               if (errors.agreement) setErrors((prev) => ({ ...prev, agreement: '' }));
             }}
-            className="w-5 h-5 mt-0.5 rounded border-gray-300 text-[#E30613] focus:ring-[#E30613] cursor-pointer"
+            className="w-5 h-5 mt-0.5 rounded border-gray-300 text-[#00a3d5] focus:ring-[#00a3d5] cursor-pointer"
           />
           <span className="font-inter text-sm text-[#718096] leading-relaxed group-hover:text-[#2D3748] transition-colors">
             Согласен на обработку{' '}
-            <a href="/privacy" className="text-[#E30613] hover:underline">
+            <a href="/privacy" className="text-[#00a3d5] hover:underline">
               персональных данных
             </a>
           </span>
@@ -204,8 +204,8 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 px-6 bg-gradient-to-r from-[#ff342f] to-[#e02e29] text-white rounded-xl font-inter text-lg font-semibold flex items-center justify-center gap-2 transition-shadow disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg"
-        style={{ boxShadow: '0 4px 16px rgba(255, 52, 47, 0.3)' }}
+        className="w-full py-4 px-6 bg-gradient-to-r from-[#E53935] to-[#D32F2F] text-white rounded-xl font-inter text-lg font-semibold flex items-center justify-center gap-2 transition-shadow disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg"
+        style={{ boxShadow: '0 4px 16px rgba(229, 57, 53, 0.3)' }}
       >
         {isSubmitting ? (
           <>

@@ -1,7 +1,7 @@
 /**
  * Компонент Preloader — прелоадер сайта
  * 
- * @description Анимированный прелоадер, показывается при загрузке сайта
+ * @description Анимированный прелоадер с вращающимся кружком загрузки
  */
 
 import { useState, useEffect } from 'react';
@@ -29,18 +29,7 @@ const Preloader = ({ minDuration = 1500 }: PreloaderProps) => {
 
   return (
     <div className={`${styles.preloader} ${isFading ? styles['preloader--fading'] : ''}`}>
-      <div className={styles.preloader__content}>
-        <img 
-          src="/images/logo.png" 
-          alt="Стеклопром" 
-          className={styles.preloader__logo}
-        />
-        <div className={styles.preloader__spinner}>
-          <div className={styles.preloader__dot}></div>
-          <div className={styles.preloader__dot}></div>
-          <div className={styles.preloader__dot}></div>
-        </div>
-      </div>
+      <div className={styles.preloader__spinner}></div>
     </div>
   );
 };
