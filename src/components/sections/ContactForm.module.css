@@ -167,7 +167,7 @@
 .contactform__formButton {
   width: 100%;
   padding: 18px 32px;
-  background: #ff342f;
+  background: #f8604a;
   color: #fefefe;
   border: none;
   border-radius: 12px;
@@ -176,13 +176,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: box-shadow 0.3s ease, background 0.3s ease;
-  box-shadow: 0 6px 20px rgba(255, 52, 47, 0.35);
+  box-shadow: 0 6px 20px rgba(248, 96, 74, 0.35);
   margin-top: 8px;
 }
 
 .contactform__formButton:hover {
-  background: #e02e29;
-  box-shadow: 0 8px 28px rgba(255, 52, 47, 0.45);
+  background: #e5503d;
+  box-shadow: 0 8px 28px rgba(248, 96, 74, 0.45);
 }
 
 .contactform__formNote {
