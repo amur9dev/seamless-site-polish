@@ -103,7 +103,7 @@
 }
 
 .footer__contactLink:hover {
-  color: #E53935;
+  color: #f8604a;
 }
 
 .footer__contactText {
@@ -174,7 +174,7 @@
 }
 
 .footer__navLink:hover {
-  color: #ff342f;
+  color: #f8604a;
 }
 
 /* Нижняя полоса */
@@ -213,7 +213,7 @@
 }
 
 .footer__legalLink:hover {
-  color: #ff342f;
+  color: #f8604a;
 }
 
 /* Адаптивность */

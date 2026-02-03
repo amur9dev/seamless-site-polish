@@ -204,8 +204,8 @@ const CallbackForm = ({ onSuccess, buttonText = 'Отправить заявку
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 px-6 bg-gradient-to-r from-[#E53935] to-[#D32F2F] text-white rounded-xl font-inter text-lg font-semibold flex items-center justify-center gap-2 transition-shadow disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg"
-        style={{ boxShadow: '0 4px 16px rgba(229, 57, 53, 0.3)' }}
+        className="w-full py-4 px-6 bg-gradient-to-r from-[#f8604a] to-[#e5503d] text-white rounded-xl font-inter text-lg font-semibold flex items-center justify-center gap-2 transition-shadow disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-lg"
+        style={{ boxShadow: '0 4px 16px rgba(248, 96, 74, 0.3)' }}
       >
         {isSubmitting ? (
           <>
