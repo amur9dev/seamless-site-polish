@@ -178,7 +178,6 @@
     position: relative;
     max-width: 100%;
     margin: 0;
-    padding-left: 32px;
   }
   
   /* Вертикальная линия таймлайна */
@@ -264,9 +263,9 @@
     font-size: 13px;
   }
   
-  .howwework__steps {
-    // padding-left: 28px;
-  }
+  // .howwework__steps {
+  //   padding-left: 28px;
+  // }
   
   .howwework__steps::before {
     left: 19px;
