@@ -40,17 +40,18 @@
 
 .howwework__steps {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   position: relative;
+  justify-items: center;
 }
 
 .howwework__steps::before {
   content: "";
   position: absolute;
   top: 40px;
-  left: 60px;
-  right: 60px;
+  left: 80px;
+  right: 80px;
   height: 2px;
   background: linear-gradient(90deg, #ff342f 0%, #ff6b68 100%);
   z-index: 0;
@@ -117,34 +118,38 @@
   margin: 0;
 }
 
-/* Адаптивность 1024px — 3 + 2 раскладка */
+/* 1024px — 4 в ряд с линией */
 @media (max-width: 1024px) {
   .howwework__steps {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
   }
 
   .howwework__steps::before {
-    display: none;
+    left: 60px;
+    right: 60px;
   }
 
-  /* 4 и 5 элементы по центру во второй строке */
-  .howwework__step:nth-child(4) {
-    grid-column: 1 / 2;
-    margin-left: auto;
-    margin-right: 0;
+  .howwework__stepNumber {
+    width: 64px;
+    height: 64px;
+    font-size: 22px;
   }
 
-  .howwework__step:nth-child(5) {
-    grid-column: 3 / 4;
-    margin-left: 0;
-    margin-right: auto;
+  .howwework__stepNumber::after {
+    inset: -3px;
   }
 
-  /* Центрируем 4 и 5 через отступы */
-  .howwework__step:nth-child(4),
-  .howwework__step:nth-child(5) {
-    justify-self: center;
+  .howwework__steps::before {
+    top: 32px;
+  }
+
+  .howwework__stepTitle {
+    font-size: 16px;
+  }
+
+  .howwework__stepDescription {
+    font-size: 13px;
   }
 }
 
@@ -187,6 +192,7 @@
     top: 24px;
     bottom: 24px;
     left: 23px;
+    right: auto;
     width: 2px;
     height: auto;
     background: linear-gradient(180deg, #ff342f 0%, #ff6b68 100%);
@@ -202,13 +208,6 @@
     background: transparent;
     border-radius: 0;
     position: relative;
-  }
-
-  .howwework__step:nth-child(4),
-  .howwework__step:nth-child(5) {
-    grid-column: auto;
-    margin: 0;
-    justify-self: auto;
   }
 
   .howwework__stepNumber {

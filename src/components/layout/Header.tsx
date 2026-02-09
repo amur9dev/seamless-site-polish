@@ -12,13 +12,14 @@ import styles from "./Header.module.css";
 
 /**
  * Контактные данные компании
- * РЕАЛЬНЫЕ ДАННЫЕ — телефон будет обновлён клиентом
  */
 const CONTACTS = {
-  phone: "+7 (863) 123-45-67",
-  phoneHref: "tel:+78631234567",
+  phone1: "+7 (863) 123-45-67",
+  phone1Href: "tel:+78631234567",
+  phone2: "+7 (863) 765-43-21",
+  phone2Href: "tel:+78637654321",
   address: "Ростов-на-Дону",
-  workHours: "Пн-Сб: 8:00-18:00",
+  workHours: "Пн-Пт: 8:00-17:00, Сб: 9:00-13:00",
 };
 
 /**
@@ -118,10 +119,16 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
               <Clock size={14} style={{ display: "inline", marginRight: "6px", verticalAlign: "middle" }} />
               {CONTACTS.workHours}
             </div>
-            <a href={CONTACTS.phoneHref} className={styles.header__topBarPhone}>
-              <Phone size={14} />
-              {CONTACTS.phone}
-            </a>
+            <div className={styles.header__topBarPhones}>
+              <a href={CONTACTS.phone1Href} className={styles.header__topBarPhone}>
+                <Phone size={14} />
+                {CONTACTS.phone1}
+              </a>
+              <span className={styles.header__topBarPhoneDivider}>|</span>
+              <a href={CONTACTS.phone2Href} className={styles.header__topBarPhone}>
+                {CONTACTS.phone2}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -177,12 +184,17 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
 
           {/* Контакты */}
           <div className={styles.header__contacts}>
-            <a href={CONTACTS.phoneHref} className={styles.header__phone}>
-              <div className={styles.header__phoneIcon}>
-                <Phone size={18} />
-              </div>
-              <span>{CONTACTS.phone}</span>
-            </a>
+            <div className={styles.header__phones}>
+              <a href={CONTACTS.phone1Href} className={styles.header__phone}>
+                <div className={styles.header__phoneIcon}>
+                  <Phone size={18} />
+                </div>
+                <div className={styles.header__phoneNumbers}>
+                  <span>{CONTACTS.phone1}</span>
+                  <span className={styles.header__phoneSecondary}>{CONTACTS.phone2}</span>
+                </div>
+              </a>
+            </div>
             <button className={styles.header__callButton} onClick={onOpenCallback}>
               Заказать звонок
             </button>
@@ -265,9 +277,13 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           </nav>
 
           <div className={styles.header__mobileContacts}>
-            <a href={CONTACTS.phoneHref} className={styles.header__mobilePhone}>
+            <a href={CONTACTS.phone1Href} className={styles.header__mobilePhone}>
               <Phone size={20} />
-              {CONTACTS.phone}
+              {CONTACTS.phone1}
+            </a>
+            <a href={CONTACTS.phone2Href} className={styles.header__mobilePhone}>
+              <Phone size={20} />
+              {CONTACTS.phone2}
             </a>
             <button
               className={styles.header__mobileCallButton}

@@ -209,23 +209,30 @@
   color: #003366;
 }
 
+.contacts__socialLinks {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
 .contacts__socialLink {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   background: linear-gradient(135deg, #0077FF 0%, #0055CC 100%);
-  border-radius: 14px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: #ffffff;
-  box-shadow: 0 6px 16px rgba(0, 119, 255, 0.25);
-  transition: box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 119, 255, 0.2);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
   text-decoration: none;
 }
 
 .contacts__socialLink:hover {
-  box-shadow: 0 8px 24px rgba(0, 119, 255, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.35);
+  transform: translateY(-2px);
 }
 
 .contacts__infoContent {

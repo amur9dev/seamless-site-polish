@@ -4,7 +4,7 @@
  * @description 5 этапов работы с клиентом
  */
 
-import { Phone, Ruler, Factory, Truck, CheckCircle } from 'lucide-react';
+import { Phone, Factory, Truck, CheckCircle } from 'lucide-react';
 import styles from './HowWeWork.module.css';
 
 /**
@@ -19,24 +19,18 @@ const STEPS = [
   },
   {
     number: 2,
-    icon: Ruler,
-    title: 'Замер',
-    description: 'Бесплатный выезд замерщика в удобное время',
-  },
-  {
-    number: 3,
     icon: Factory,
     title: 'Производство',
     description: 'Изготовление стеклопакетов на современном оборудовании',
   },
   {
-    number: 4,
+    number: 3,
     icon: Truck,
     title: 'Доставка',
     description: 'Бережная доставка по Ростову-на-Дону и области',
   },
   {
-    number: 5,
+    number: 4,
     icon: CheckCircle,
     title: 'Готово',
     description: 'Приёмка заказа и гарантия 5 лет',
@@ -56,7 +50,7 @@ const HowWeWork = () => {
             Как мы работаем
           </h2>
           <p className={styles.howwework__subtitle}>
-            От заявки до готового стеклопакета — всего 5 простых шагов. 
+            От заявки до готового стеклопакета — всего 4 простых шага. 
             Мы ценим ваше время.
           </p>
         </header>

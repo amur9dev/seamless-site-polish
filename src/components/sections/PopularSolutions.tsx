@@ -22,6 +22,16 @@ import styles from './PopularSolutions.module.css';
  */
 const PRODUCTS = [
   {
+    id: 'odnokamernye',
+    image: '/placeholder.svg',
+    title: 'Однокамерные',
+    description: 'Экономичный вариант для остекления балконов, лоджий и нежилых помещений. Лёгкая конструкция с хорошей светопропускаемостью',
+    features: ['Толщина 24 мм', 'Формула 4-16-4', 'Лёгкий вес'],
+    price: 'от 1 200',
+    href: '/catalog/odnokamernye',
+    popular: false,
+  },
+  {
     id: 'dvuhkamernye',
     image: '/placeholder.svg',
     title: 'Двухкамерные',
@@ -49,16 +59,6 @@ const PRODUCTS = [
     features: ['I-стекло Low-E', 'Заполнение аргоном', 'Экономия до 40%'],
     price: 'от 2 400',
     href: '/catalog/energosberegayushchie',
-    popular: false,
-  },
-  {
-    id: 'shumoizolyatsionnye',
-    image: '/placeholder.svg',
-    title: 'Шумоизоляционные',
-    description: 'Тишина даже у оживлённой дороги благодаря многослойной конструкции. Снижение шума до 42 дБ',
-    features: ['Триплекс', 'До 42 дБ изоляции', 'Разная толщина стёкол'],
-    price: 'от 2 800',
-    href: '/catalog/shumoizolyatsionnye',
     popular: false,
   },
 ];
