@@ -54,7 +54,18 @@
 .header__topBarContacts {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
+}
+
+.header__topBarPhones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__topBarPhoneDivider {
+  opacity: 0.4;
+  font-size: 12px;
 }
 
 .header__topBarWorkHours {
@@ -242,7 +253,12 @@
 .header__contacts {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+}
+
+.header__phones {
+  display: flex;
+  align-items: center;
 }
 
 .header__phone {
@@ -250,14 +266,30 @@
   align-items: center;
   gap: 10px;
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #00a3d5;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
+.header__phoneNumbers {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.header__phoneSecondary {
+  font-size: 13px;
+  font-weight: 500;
+  color: #718096;
+}
+
 .header__phone:hover {
+  color: #ff342f;
+}
+
+.header__phone:hover .header__phoneSecondary {
   color: #ff342f;
 }
 
