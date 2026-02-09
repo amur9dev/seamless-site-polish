@@ -50,9 +50,10 @@ const PRODUCTS = [
   },
 ];
 
-/** Мини-слайдер для изображений карточки */
+/** Мини-слайдер для изображений карточки с поддержкой свайпов */
 const CardImageSlider = ({ images, alt }: { images: string[]; alt: string }) => {
   const [current, setCurrent] = useState(0);
+  const touchStartX = useState<number | null>(null);
 
   const prev = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -66,8 +67,29 @@ const CardImageSlider = ({ images, alt }: { images: string[]; alt: string }) => 
     setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX[1](e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX[0] === null) return;
+    const diff = touchStartX[0] - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+      } else {
+        setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+      }
+    }
+    touchStartX[1](null);
+  };
+
   return (
-    <div className={styles.solutions__cardImageWrapper}>
+    <div
+      className={styles.solutions__cardImageWrapper}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <img
         src={images[current]}
         alt={`${alt} — фото ${current + 1}`}

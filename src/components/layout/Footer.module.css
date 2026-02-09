@@ -140,9 +140,9 @@
   color: #fefefe;
 }
 
-/* Колонки навигации */
+/* Колонки навигации — выравнивание по уровню описания */
 .footer__nav {
-  padding-top: 0;
+  padding-top: 78px;
 }
 
 .footer__navTitle {
@@ -255,6 +255,10 @@
   .footer__grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .footer__nav {
+    padding-top: 0;
   }
   
   .footer__logoImage {
