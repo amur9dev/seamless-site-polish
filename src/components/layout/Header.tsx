@@ -185,15 +185,13 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           {/* Контакты */}
           <div className={styles.header__contacts}>
             <div className={styles.header__phones}>
-              <a href={CONTACTS.phone1Href} className={styles.header__phone}>
-                <div className={styles.header__phoneIcon}>
-                  <Phone size={18} />
-                </div>
-                <div className={styles.header__phoneNumbers}>
-                  <span>{CONTACTS.phone1}</span>
-                  <span className={styles.header__phoneSecondary}>{CONTACTS.phone2}</span>
-                </div>
-              </a>
+              <div className={styles.header__phoneIcon}>
+                <Phone size={18} />
+              </div>
+              <div className={styles.header__phoneNumbers}>
+                <a href={CONTACTS.phone1Href} className={styles.header__phoneLink}>{CONTACTS.phone1}</a>
+                <a href={CONTACTS.phone2Href} className={styles.header__phoneLinkSecondary}>{CONTACTS.phone2}</a>
+              </div>
             </div>
             <button className={styles.header__callButton} onClick={onOpenCallback}>
               Заказать звонок
@@ -277,14 +275,19 @@ const Header = ({ onOpenCallback }: HeaderProps) => {
           </nav>
 
           <div className={styles.header__mobileContacts}>
-            <a href={CONTACTS.phone1Href} className={styles.header__mobilePhone}>
-              <Phone size={20} />
-              {CONTACTS.phone1}
-            </a>
-            <a href={CONTACTS.phone2Href} className={styles.header__mobilePhone}>
-              <Phone size={20} />
-              {CONTACTS.phone2}
-            </a>
+            <div className={styles.header__mobilePhonesGroup}>
+              <div className={styles.header__mobilePhoneIcon}>
+                <Phone size={20} />
+              </div>
+              <div className={styles.header__mobilePhoneNumbers}>
+                <a href={CONTACTS.phone1Href} className={styles.header__mobilePhone}>
+                  {CONTACTS.phone1}
+                </a>
+                <a href={CONTACTS.phone2Href} className={styles.header__mobilePhone}>
+                  {CONTACTS.phone2}
+                </a>
+              </div>
+            </div>
             <button
               className={styles.header__mobileCallButton}
               onClick={() => {

@@ -95,7 +95,7 @@
 /* Изображение продукта */
 .solutions__cardImageWrapper {
   width: 100%;
-  height: 140px;
+  aspect-ratio: 4/3;
   background: linear-gradient(135deg, #f8f9fa 0%, #e2e8f0 100%);
   border-radius: 10px;
   margin-bottom: 16px;
@@ -103,6 +103,65 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+/* Слайдер точки */
+.solutions__sliderDots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.solutions__sliderDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.solutions__sliderDot--active {
+  background: #fefefe;
+}
+
+/* Слайдер стрелки */
+.solutions__sliderArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: #00407e;
+}
+
+.solutions__cardImageWrapper:hover .solutions__sliderArrow {
+  opacity: 1;
+}
+
+.solutions__sliderArrow--prev {
+  left: 6px;
+}
+
+.solutions__sliderArrow--next {
+  right: 6px;
 }
 
 .solutions__cardImage {
