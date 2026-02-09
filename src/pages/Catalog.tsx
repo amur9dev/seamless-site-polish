@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowRight, Thermometer, Volume2, Sun, Shield, Home, Building2, Warehouse, Layers, Square, Snowflake, Palette, Lock, Zap, Sparkles, Eye, Grid3X3, Droplets } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Thermometer, Volume2, Sun, Shield, Home, Building2, Warehouse, Layers, Square, Snowflake, Palette, Lock, Zap, Sparkles, Eye, Grid3X3, Droplets } from 'lucide-react';
 import { Layout, Breadcrumbs } from '@/components/layout';
 import { ContactForm } from '@/components/sections';
 import { useSeoMeta } from '@/hooks/useSeoMeta';
@@ -547,6 +547,54 @@ const PRODUCTS = [
   },
 ];
 
+/** Мини-слайдер для карточек каталога */
+const CatalogCardSlider = ({ images, alt }: { images: string[]; alt: string }) => {
+  const [current, setCurrent] = useState(0);
+
+  const prev = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+  };
+
+  const next = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+  };
+
+  return (
+    <div className={styles.catalog__cardImageWrapper}>
+      <img
+        src={images[current]}
+        alt={`${alt} — фото ${current + 1}`}
+        className={styles.catalog__cardImage}
+        loading="lazy"
+      />
+      {images.length > 1 && (
+        <>
+          <button className={`${styles.catalog__sliderArrow} ${styles['catalog__sliderArrow--prev']}`} onClick={prev} aria-label="Предыдущее фото">
+            <ChevronLeft size={16} />
+          </button>
+          <button className={`${styles.catalog__sliderArrow} ${styles['catalog__sliderArrow--next']}`} onClick={next} aria-label="Следующее фото">
+            <ChevronRight size={16} />
+          </button>
+          <div className={styles.catalog__sliderDots}>
+            {images.map((_, i) => (
+              <button
+                key={i}
+                className={`${styles.catalog__sliderDot} ${i === current ? styles['catalog__sliderDot--active'] : ''}`}
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCurrent(i); }}
+                aria-label={`Фото ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
 /**
  * Компонент CatalogPage
  */
@@ -772,16 +820,11 @@ const CatalogPage = () => {
 
           <div className={styles.catalog__grid}>
             {PRODUCTS.map((product) => (
-              <Link 
-                key={product.slug} 
-                to={`/catalog/${product.slug}`} 
-                className={styles.catalog__cardLink}
-              >
+              <div key={product.slug} className={styles.catalog__cardLink}>
                 <article className={styles.catalog__card}>
-                  <img
-                    src={product.image}
+                  <CatalogCardSlider
+                    images={[product.image, product.image]}
                     alt={`${product.fullTitle} — купить в Ростове-на-Дону`}
-                    className={styles.catalog__cardImage}
                   />
                   <div className={styles.catalog__cardContent}>
                     <h2 className={styles.catalog__cardTitle}>
@@ -801,13 +844,13 @@ const CatalogPage = () => {
                     <div className={styles.catalog__cardPrice}>
                       {product.price} <span className={styles.catalog__cardPriceLabel}>₽/м²</span>
                     </div>
-                    <span className={styles.catalog__cardButton}>
+                    <Link to={`/catalog/${product.slug}`} className={styles.catalog__cardButton}>
                       Подробнее
                       <ArrowRight size={18} />
-                    </span>
+                    </Link>
                   </div>
                 </article>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
